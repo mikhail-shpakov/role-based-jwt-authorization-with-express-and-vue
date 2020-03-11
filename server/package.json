@@ -1,0 +1,40 @@
+{
+  "author": "Mikhail Shpakov <mikhail.n.shpakov@gmail.com>",
+  "name": "backend-timeweb",
+  "version": "1.0.0",
+  "description": "Test task for Timeweb",
+  "main": "src/server.js",
+  "scripts": {
+    "db": "ssh -N -L 8090:localhost:5432 -v dbuser@91.210.169.243",
+    "adminer": "ssh -N -L 8085:localhost:8080 -v dbuser@91.210.169.243",
+    "dev": "cross-env NODE_ENV=development nodemon --ext js --watch src --exec 'npm run lint && node src/server.js'",
+    "prod": "cross-env NODE_ENV=production pm2-runtime ./src/server.js",
+    "lint": "npx eslint .",
+    "test:unit": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jest": "^23.7.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-security": "^1.4.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "jest": "^25.1.0",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
+  },
+  "dependencies": {
+    "celebrate": "^12.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.1.1",
+    "helmet": "^3.21.2",
+    "morgan": "^1.9.1",
+    "node-pre-gyp": "^0.14.0",
+    "npm-check-updates": "^4.0.1",
+    "pg": "^7.18.2"
+  }
+}

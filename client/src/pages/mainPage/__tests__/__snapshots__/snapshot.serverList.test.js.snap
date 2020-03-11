@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`./serverList.vue when load page, list renders correctly 1`] = `
+<div class="container">
+  <p class="title is-size-4">Список серверов</p>
+  <p class="subtitle">Нажмите на любой сервер, чтобы начать редактирование
+    и Esc, чтобы выйти из режима редактирования</p>
+  <div class="table-box">
+    <b-table-stub data="[object Object]" columns="[object Object],[object Object],[object Object]" striped="true" hoverable="true" headercheckable="true" checkboxposition="left" selected="[object Object]" isrowcheckable="function _default() {
+        return true;
+      }" checkedrows="" mobilecards="true" defaultsortdirection="asc" sorticon="arrow-up" sorticonsize="is-small" sortmultipledata="" currentpage="1" perpage="20" showdetailicon="true" paginationposition="bottom" rowclass="function _default() {
+        return '';
+      }" openeddetailed="" hasdetailedvisible="function _default() {
+        return true;
+      }" detailkey="" total="0"><template></template><template></template></b-table-stub>
+  </div>
+</div>
+`;

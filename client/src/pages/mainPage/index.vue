@@ -1,0 +1,106 @@
+<template lang="pug">
+.columns
+  .column.is-half
+    server-list(
+      @selectServer="selectServer"
+      :data="list"
+      :isLoading="isLoading"
+    )
+  .column.form
+    transition(
+      name="fade"
+      mode="out-in"
+      :duration="{ enter: 100, leave: 200 }"
+    )
+      .img-empty(
+        v-if="!('customer_id' in selected)"
+      )
+        img(
+          alt="image-choice"
+          src="@/assets/choice.svg"
+        )
+        p.img-title Сервер для редактирования не выбран
+      server-form(
+        @changeServer="changeServer"
+        :selected="selected"
+        v-else
+      )
+</template>
+
+<script>
+import methods from '@/services/api/methods'
+import serverList from './serverList'
+import serverForm from './serverForm'
+import msgAfterServerReq from './mixins/msgAfterServerReq'
+
+export default {
+  name: 'mainPage',
+  components: {
+    serverList,
+    serverForm
+  },
+  mixins: [
+    msgAfterServerReq
+  ],
+  data () {
+    return {
+      selected: {},
+      list: [],
+      isLoading: true
+    }
+  },
+  methods: {
+    async fetchServerList () {
+      const isFailed = () => {
+        this.msgAfterServerReq(
+          'При загрузки данных произошла ошибка, попробуйте повторить позднее',
+          'is-danger'
+        )
+      }
+
+      try {
+        const request = await methods.fetchData('server')
+
+        if (request.status !== 200) {
+          isFailed()
+        }
+
+        this.list = request.data
+      } catch (e) {
+        isFailed()
+        throw e
+      } finally {
+        this.isLoading = false
+      }
+    },
+    selectServer (value) {
+      this.selected = value
+    },
+    changeServer (value) {
+      this.list.forEach((e, index) => {
+        if (e.customer_id === value.customer_id) {
+          this.$set(this.list, index, value)
+        }
+      })
+
+      this.selected = {}
+    }
+  },
+  async mounted () {
+    await this.fetchServerList()
+  }
+}
+</script>
+
+<style lang="sass" scoped>
+div.columns
+  margin: 0
+  .column.form
+    @media (min-width: $display-bp-desktop)
+      padding-left: 50px
+    div.img-empty
+      padding: 40px 0
+      p.img-title
+        margin-top: 10px
+        text-align: center
+</style>
