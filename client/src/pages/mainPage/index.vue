@@ -12,14 +12,11 @@
       mode="out-in"
       :duration="{ enter: 100, leave: 200 }"
     )
-      .img-empty(
+      div(
         v-if="!('customer_id' in selected)"
       )
-        img(
-          alt="image-choice"
-          src="@/assets/choice.svg"
-        )
-        p.img-title Сервер для редактирования не выбран
+        .img-empty
+        p Сервер для редактирования не выбран
       server-form(
         @changeServer="changeServer"
         :selected="selected"
@@ -98,9 +95,12 @@ div.columns
   .column.form
     @media (min-width: $display-bp-desktop)
       padding-left: 50px
+      display: flex
+      align-items: center
+      justify-content: center
     div.img-empty
-      padding: 40px 0
-      p.img-title
-        margin-top: 10px
-        text-align: center
+      background-image: url("../../assets/choice.svg")
+      background-size: 100% 100%
+      min-height: 350px
+      min-width: 330px
 </style>
