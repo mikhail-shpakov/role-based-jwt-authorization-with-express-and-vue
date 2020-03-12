@@ -6,6 +6,7 @@ import Buefy from 'buefy'
 import './helpers/registerServiceWorker'
 import '@mdi/font/css/materialdesignicons.css'
 import 'regenerator-runtime/runtime'
+import router from './router'
 
 Vue.use(Buefy, {
   defaultIconPack: 'mdi'
@@ -14,5 +15,6 @@ Vue.use(Buefy, {
 Vue.config.productionTip = false
 
 new Vue({
+  router,
   render: h => h(App)
 }).$mount('#app')

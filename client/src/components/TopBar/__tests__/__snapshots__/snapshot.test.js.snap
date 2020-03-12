@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`./index.vue when load page, topBar renders correctly 1`] = `
+exports[`./index.vue when load page, TopBar renders correctly 1`] = `
 <div class="section">
   <nav role="navigation" aria-label="main navigation" class="navbar navbar-custom">
     <div class="navbar-brand"><a href="https://timeweb.com/" target="_blank" rel="noopener" class="navbar-item item-logo"><img src="@/image/logo.svg" alt="img-logo-timeweb"></a></div>

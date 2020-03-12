@@ -10,13 +10,13 @@
     transition(
       name="fade"
       mode="out-in"
-      :duration="{ enter: 100, leave: 200 }"
+      :duration="{ enter: 150, leave: 150 }"
     )
       div(
-        v-if="!('customer_id' in selected)"
+        v-if="!('user_id' in selected)"
       )
         .img-empty
-        p Сервер для редактирования не выбран
+        p.has-text-centered Сервер для редактирования не выбран
       server-form(
         @changeServer="changeServer"
         :selected="selected"
@@ -26,15 +26,15 @@
 
 <script>
 import methods from '@/services/api/methods'
-import serverList from './serverList'
-import serverForm from './serverForm'
+import ServerList from './ServerList'
+import ServerForm from './ServerForm'
 import msgAfterServerReq from './mixins/msgAfterServerReq'
 
 export default {
-  name: 'mainPage',
+  name: 'Servers',
   components: {
-    serverList,
-    serverForm
+    ServerList,
+    ServerForm
   },
   mixins: [
     msgAfterServerReq
@@ -75,7 +75,7 @@ export default {
     },
     changeServer (value) {
       this.list.forEach((e, index) => {
-        if (e.customer_id === value.customer_id) {
+        if (e.user_id === value.user_id) {
           this.$set(this.list, index, value)
         }
       })
@@ -92,15 +92,18 @@ export default {
 <style lang="sass" scoped>
 div.columns
   margin: 0
+
   .column.form
     @media (min-width: $display-bp-desktop)
       padding-left: 50px
       display: flex
       align-items: center
       justify-content: center
+
     div.img-empty
       background-image: url("../../assets/choice.svg")
       background-size: 100% 100%
       min-height: 350px
-      min-width: 330px
+      @media (min-width: $display-bp-desktop)
+        min-width: 330px
 </style>

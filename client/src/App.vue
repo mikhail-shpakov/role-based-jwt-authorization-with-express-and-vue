@@ -1,18 +1,17 @@
 <template lang="pug">
 #app
   top-bar
-  .pages
-    main-page
+  router-view.pages
 </template>
 
 <script>
-import topBar from './components/topBar/index'
-import mainPage from './pages/mainPage'
+import TopBar from './components/TopBar/index'
+import Servers from './pages/Servers'
 
 export default {
   components: {
-    topBar,
-    mainPage
+    TopBar,
+    Servers
   }
 }
 

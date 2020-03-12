@@ -2,12 +2,12 @@ import { createLocalVue, shallowMount } from '@vue/test-utils'
 import Buefy from 'buefy'
 import serverList from '../serverList'
 
-describe('./serverList.vue', () => {
+describe('./ServerList.vue', () => {
   const localVue = createLocalVue()
   localVue.use(Buefy)
 
   const data = [{
-    customer_id: 'user5',
+    user_id: 'user5',
     server_name: 'server2',
     server_type: 'dedicated'
   }]

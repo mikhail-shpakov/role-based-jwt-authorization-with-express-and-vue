@@ -2,12 +2,12 @@ import { createLocalVue, shallowMount } from '@vue/test-utils'
 import Buefy from 'buefy'
 import serverForm from '../serverForm'
 
-describe('./serverForm.vue', () => {
+describe('./ServerForm.vue', () => {
   const localVue = createLocalVue()
   localVue.use(Buefy)
 
   const selected = {
-    customer_id: 'user5',
+    user_id: 'user5',
     server_name: 'server2',
     server_type: 'dedicated'
   }

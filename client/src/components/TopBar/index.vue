@@ -1,4 +1,4 @@
-<template functional lang="pug">
+<template lang="pug">
 .section.is-vertical-center
   b-navbar.navbar-custom
     template(slot="brand")
@@ -11,19 +11,34 @@
           src="@/assets/logo.svg"
           alt="img-logo"
         )
+
+    template(slot='start')
+      b-button.is-text(
+        tag="router-link"
+        to="Servers"
+      ) Сервера
+
     template(slot='end')
       b-button.is-text(
+        tag="router-link"
+        to="About"
+      ) О приложении
+      b-button(
         tag="a"
         href="https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue"
         target="_blank"
         rel="noopener"
         icon-left="github-circle"
       ) Репозиторий
+      b-button.is-danger.is-outlined(
+        tag="router-link"
+        to="Login"
+      ) Выйти
 </template>
 
 <script>
 export default {
-  name: 'topBar'
+  name: 'TopBar'
 }
 </script>
 
@@ -34,13 +49,25 @@ div.section
   vertical-align: center
   @media (min-width: $display-bp-desktop)
     padding: 0.75rem 0
+
     .navbar-custom
       width: $display-width
       margin: auto
+
   .navbar-item img
     max-height: 36px
     @media (min-width: $display-bp-desktop)
       max-height: 50px
-  a.button.is-text
+
+  a.button
     align-self: center
+    margin: 0.5rem 0.75rem
+    display: table
+    width: auto
+    @media (min-width: $display-bp-desktop)
+      margin: 0 0 0 0.75rem
+      display: inline-flex
+
+    &.is-text
+      text-decoration: none
 </style>

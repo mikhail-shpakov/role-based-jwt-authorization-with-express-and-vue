@@ -1,16 +1,9 @@
 {
   "name": "frontend-based-role-authorization",
   "version": "0.1.0",
-  "description": "role-based-jwt-authorization-with-express-and-vue",
-  "keywords": ["Vue.js"],
-  "homepage": "https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue",
-  "license": "MIT",
-  "author": "Mikhail Shpakov <mikhail.n.shpakov@gmail.com> (https://shpakov.dev/)",
   "private": true,
-  "repository": {
-    "type" : "git",
-    "url" : "https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue.git"
-  },
+  "description": "role-based-jwt-authorization-with-express-and-vue",
+  "author": "Mikhail Shpakov <mikhail.n.shpakov@gmail.com> (https://shpakov.dev/)",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --modern",
@@ -30,13 +23,15 @@
     "pug-plain-loader": "^1.0.0",
     "regenerator-runtime": "^0.13.3",
     "register-service-worker": "^1.6.2",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.1.5"
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@vue/cli-plugin-babel": "^4.2.2",
     "@vue/cli-plugin-eslint": "^4.2.2",
     "@vue/cli-plugin-pwa": "^4.2.2",
+    "@vue/cli-plugin-router": "^4.2.3",
     "@vue/cli-plugin-unit-jest": "^4.2.2",
     "@vue/cli-service": "^4.2.2",
     "@vue/eslint-config-standard": "^5.1.2",
@@ -47,15 +42,24 @@
     "chromedriver": "80",
     "css-loader": "^3.4.2",
     "eslint": "^6.8.0",
-    "eslint-plugin-vue": "^6.2.1",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.1",
     "geckodriver": "^1.19.1",
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",
     "vue-loader": "^15.9.0",
     "vue-template-compiler": "^2.6.11"
+  },
+  "homepage": "https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue",
+  "keywords": [
+    "Vue.js"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue.git"
   }
 }

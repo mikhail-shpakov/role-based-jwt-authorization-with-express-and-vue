@@ -6,7 +6,7 @@
   )
     p
       strong ID:
-      |  {{ selected.customer_id }}
+      |  {{ selected.user_id }}
 
     .divider
 
@@ -54,7 +54,7 @@ export default {
     return {
       isLoading: false,
       local: {
-        customer_id: '',
+        user_id: '',
         server_name: '',
         server_type: ''
       }

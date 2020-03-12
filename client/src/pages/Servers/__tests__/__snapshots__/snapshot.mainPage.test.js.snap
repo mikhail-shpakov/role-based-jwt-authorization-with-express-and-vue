@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`./index.vue when load page, mainPage renders correctly 1`] = `
+exports[`./index.vue when load page, Servers renders correctly 1`] = `
 <div class="columns">
   <div class="column is-half">
     <server-list-stub data="" isloading="true"></server-list-stub>

@@ -45,7 +45,7 @@ export default {
       selected: {},
       columns: [
         {
-          field: 'customer_id',
+          field: 'user_id',
           label: 'ID',
           width: '60'
         },
