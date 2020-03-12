@@ -20,7 +20,7 @@ describe('../index.js', () => {
     expect(res.body).toEqual(
       expect.arrayContaining([
         expect.objectContaining({
-          customer_id: 'user1',
+          user_id: 'user1',
           server_name: 'server7',
           server_type: 'vds'
         })

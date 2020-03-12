@@ -5,9 +5,7 @@ services:
     image: postgres:12.1-alpine
     restart: always
     environment:
-      POSTGRES_PASSWORD: lD%$Y%XUaW$lc6Hg
-    volumes:
-      - /postgres-data:/var/lib/postgresql/data
+      POSTGRES_PASSWORD: test
     ports:
       - 5432:5432
     networks:
