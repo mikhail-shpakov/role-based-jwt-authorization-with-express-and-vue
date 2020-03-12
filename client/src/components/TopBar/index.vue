@@ -28,7 +28,7 @@
         href="https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue"
         target="_blank"
         rel="noopener"
-        icon-left="github-circle"
+        icon-left="github"
       ) Репозиторий
       b-button.is-danger.is-outlined(
         tag="router-link"
