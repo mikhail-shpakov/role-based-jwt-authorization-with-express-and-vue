@@ -7,9 +7,9 @@ describe('./ServerList.vue', () => {
   localVue.use(Buefy)
 
   const data = [{
-    user_id: 'user5',
-    server_name: 'server2',
-    server_type: 'dedicated'
+    id: 'user5',
+    serverName: 'server2',
+    serverType: 'dedicated'
   }]
 
   const isLoading = false

@@ -2,13 +2,13 @@
 //
 // module.exports = async (row) => {
 //   const {
-//     server_name,
-//     server_type,
-//     user_id
+//     serverName,
+//     serverType,
+//     userId
 //   } = row
 //
-//   const sql = 'UPDATE servers SET server_name = $1, server_type = $2 WHERE user_id = $3;'
-//   const value = [server_name, server_type, user_id]
+//   const sql = 'UPDATE servers SET serverName = $1, serverType = $2 WHERE userId = $3;'
+//   const value = [serverName, serverType, userId]
 //
 //   try {
 //     await transaction(sql, value)

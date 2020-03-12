@@ -7,9 +7,9 @@ describe('./ServerForm.vue', () => {
   localVue.use(Buefy)
 
   const selected = {
-    user_id: 'user5',
-    server_name: 'server2',
-    server_type: 'dedicated'
+    id: 'user5',
+    serverName: 'server2',
+    serverType: 'dedicated'
   }
 
   it('when load page, form renders correctly', () => {

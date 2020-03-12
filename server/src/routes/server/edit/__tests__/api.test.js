@@ -10,9 +10,9 @@ describe('/server', () => {
     const res = await request(app)
       .patch('/server')
       .send({
-        user_id: 'user1',
-        server_name: 'server7',
-        server_type: 'vds'
+        userId: 'user1',
+        serverName: 'server7',
+        serverType: 'vds'
       })
 
     expect(res.statusCode).toEqual(200)
@@ -22,7 +22,7 @@ describe('/server', () => {
     const res = await request(app)
       .patch('/server')
       .send({
-        user_id: 'user1'
+        userId: 'user1'
       })
 
     expect(res.statusCode).toEqual(400)

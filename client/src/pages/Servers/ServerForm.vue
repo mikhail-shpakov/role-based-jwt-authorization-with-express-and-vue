@@ -6,19 +6,19 @@
   )
     p
       strong ID:
-      |  {{ selected.user_id }}
+      |  {{ selected.id }}
 
     .divider
 
     b-field(label="Название сервера")
       b-input(
-        v-model.trim="local.server_name"
+        v-model.trim="local.serverName"
         expanded
         required
       )
     b-field.input-margin(label="Тип сервера")
       b-select(
-        v-model.trim='local.server_type'
+        v-model.trim='local.serverType'
         expanded
       )
         option(
@@ -54,9 +54,9 @@ export default {
     return {
       isLoading: false,
       local: {
-        user_id: '',
-        server_name: '',
-        server_type: ''
+        id: '',
+        serverName: '',
+        serverType: ''
       }
     }
   },

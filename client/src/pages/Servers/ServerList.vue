@@ -45,16 +45,16 @@ export default {
       selected: {},
       columns: [
         {
-          field: 'user_id',
+          field: 'id',
           label: 'ID',
           width: '60'
         },
         {
-          field: 'server_name',
+          field: 'serverName',
           label: 'Название сервера'
         },
         {
-          field: 'server_type',
+          field: 'serverType',
           label: 'Тип сервера'
         }
       ]

@@ -13,7 +13,7 @@
       :duration="{ enter: 150, leave: 150 }"
     )
       div(
-        v-if="!('user_id' in selected)"
+        v-if="!('id' in selected)"
       )
         .img-empty
         p.has-text-centered Сервер для редактирования не выбран
@@ -75,7 +75,7 @@ export default {
     },
     changeServer (value) {
       this.list.forEach((e, index) => {
-        if (e.user_id === value.user_id) {
+        if (e.id === value.id) {
           this.$set(this.list, index, value)
         }
       })

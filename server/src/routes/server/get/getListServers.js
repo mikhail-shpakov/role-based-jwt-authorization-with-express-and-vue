@@ -1,11 +1,13 @@
-
+const db = require('../../../db/models/')
+const Server = db.servers
 
 module.exports = async () => {
-  const sqlGetUser = 'SELECT * FROM servers ORDER BY user_id;'
-
   try {
-    const response = await query(sqlGetUser, [])
-    return response.rows
+    const servers = await Server.findAll({
+      attributes: ['id', 'serverName', 'serverType']
+    })
+
+    return servers.map(s => s.dataValues)
   } catch (e) {
     console.log(e)
     return false
