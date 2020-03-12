@@ -56,7 +56,7 @@ export default {
       }
 
       try {
-        const request = await methods.fetchData('server')
+        const request = await methods.httpReq('server')
 
         if (request.status !== 200) {
           isFailed()

@@ -66,7 +66,7 @@ div
 
   &.tile
     max-width: 350px
-    padding: 20px 22px
+    padding: 30px 22px
     border: 1px solid $color-alt
     border-radius: 6px
     display: block
