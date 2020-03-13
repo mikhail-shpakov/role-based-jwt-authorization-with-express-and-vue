@@ -20,7 +20,7 @@ const routes = [
   },
   {
     path: '/servers',
-    name: 'servers',
+    name: 'Servers',
     component: () => import('@/pages/Servers/')
   },
   {
