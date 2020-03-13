@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 const helmet = require('helmet')
 const cors = require('cors')
 const morgan = require('morgan')
@@ -9,6 +10,10 @@ const routes = require('./routes')
 const limiter = require('./config/rateLimitConfig')
 const app = express()
 const db = require('./db/models')
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.resolve(__dirname, '../client/dist')))
+}
 
 app.set('trust proxy', 1)
 app.use(helmet())

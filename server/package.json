@@ -5,10 +5,8 @@
   "description": "Test task for Timeweb",
   "main": "src/server.js",
   "scripts": {
-    "db": "ssh -N -L 8090:localhost:5432 -v dbuser@91.210.169.243",
-    "adminer": "ssh -N -L 8085:localhost:8080 -v dbuser@91.210.169.243",
     "dev": "cross-env NODE_ENV=development nodemon --ext js --watch src --exec 'npm run lint && node src/server.js'",
-    "prod": "cross-env NODE_ENV=production pm2-runtime ./src/server.js",
+    "start": "cross-env NODE_ENV=production node src/server.js",
     "lint": "npx eslint .",
     "test:unit": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles"
   },

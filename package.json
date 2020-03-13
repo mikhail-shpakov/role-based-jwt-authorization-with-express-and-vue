@@ -7,9 +7,7 @@
     "node": "10.x"
   },
   "scripts": {
-    "preinstall": "npm install -g @vue/cli",
-    "start": "node server/src/server.js",
-    "build": "cd client/ && npm install && npm run build"
+    "start": "cd server/ && npm start"
   },
   "bugs": {
     "url": "https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue/issues"
