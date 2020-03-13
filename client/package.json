@@ -56,14 +56,5 @@
     "vue-cli-plugin-store": "0.0.7",
     "vue-loader": "^15.9.0",
     "vue-template-compiler": "^2.6.11"
-  },
-  "homepage": "https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue",
-  "keywords": [
-    "Vue.js"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue.git"
   }
 }

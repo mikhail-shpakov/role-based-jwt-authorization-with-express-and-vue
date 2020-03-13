@@ -1,0 +1,25 @@
+{
+  "name": "role-based-jwt-authorization-with-express-and-vue",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Mikhail Shpakov <mikhail.n.shpakov@gmail.com> (https://shpakov.dev/)",
+  "engines": {
+    "node": "10.x"
+  },
+  "scripts": {
+    "start": "node server/src/server.js",
+    "build": "cd client/ && npm install && npm run build"
+  },
+  "bugs": {
+    "url": "https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue/issues"
+  },
+  "homepage": "https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue",
+  "keywords": [
+    "Vue.js"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue.git"
+  }
+}
