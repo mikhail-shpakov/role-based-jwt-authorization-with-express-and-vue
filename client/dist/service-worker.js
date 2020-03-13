@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.03d19b200af3a4025829b4c2fd6411cb.js"
+  "/precache-manifest.8f7417e51455b674af447d40c6b839c7.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "frontend-based-role-authorization"});
