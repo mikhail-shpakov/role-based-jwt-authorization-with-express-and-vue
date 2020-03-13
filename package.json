@@ -7,6 +7,7 @@
     "node": "10.x"
   },
   "scripts": {
+    "preinstall": "npm install -g @vue/cli",
     "start": "node server/src/server.js",
     "build": "cd client/ && npm install && npm run build"
   },
