@@ -7,7 +7,7 @@
     "node": "10.x"
   },
   "scripts": {
-    "start": "cd server/ && npm start"
+    "start": "cd server/ && npm ci && npm start"
   },
   "bugs": {
     "url": "https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue/issues"
