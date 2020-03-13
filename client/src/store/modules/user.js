@@ -1,4 +1,6 @@
 import methods from '@/services/api/methods'
+import router from '../../router'
+import failedToast from '../../helpers/failedToast'
 const jwt = require('jsonwebtoken')
 
 const state = {
@@ -7,12 +9,18 @@ const state = {
 }
 
 const getters = {
-  GET_USER: (state) => state.userInfo
+  GET_USER: (state) => state.userInfo,
+  GET_TOKEN: (state) => state.token
 }
 
 const mutations = {
-  SET_USER (state, token) {
-    state.userInfo = user
+  SET_USER_DATA (state, token) {
+    state.token = token
+    state.userInfo = jwt.decode(token)
+  },
+  REMOVE_USER_DATA (state) {
+    state.token = ''
+    state.userInfo = {}
   }
 }
 
@@ -21,11 +29,22 @@ const actions = {
     try {
       const request = await methods.httpReq('auth/login', 'post', authData)
 
-      if (request.status !== 200) {
-        console.warn('Error')
+      if (request.status === 401) {
+        failedToast('Неверный логин или пароль')
+        return
       }
 
-      await context.commit('SET_USER', request.data.token)
+      await context.commit('SET_USER_DATA', request.data.token)
+      await router.push({ path: '/servers' })
+    } catch (e) {
+      console.error(e)
+    }
+  },
+  LOGOUT: async (context) => {
+    try {
+      await methods.httpReq('auth/logout', 'get')
+      await context.commit('REMOVE_USER_DATA')
+      await router.push({ path: '/login' })
     } catch (e) {
       console.error(e)
     }

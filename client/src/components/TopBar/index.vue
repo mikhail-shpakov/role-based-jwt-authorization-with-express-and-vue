@@ -16,6 +16,7 @@
       b-button.is-text(
         tag="router-link"
         to="Servers"
+        v-if="token"
       ) Сервера
 
     template(slot='end')
@@ -31,14 +32,38 @@
         icon-left="github"
       ) Репозиторий
       b-button.is-danger.is-outlined(
-        tag="router-link"
-        to="Login"
+        tag="a"
+        @click="logout"
+        :loading="isLoading"
+        v-if="token"
       ) Выйти
 </template>
 
 <script>
+import { mapState, mapActions } from 'vuex'
+
 export default {
-  name: 'TopBar'
+  name: 'TopBar',
+  data () {
+    return {
+      isLoading: false
+    }
+  },
+  methods: {
+    ...mapActions('user', [
+      'LOGOUT'
+    ]),
+    async logout () {
+      this.isLoading = true
+      await this.LOGOUT()
+      this.isLoading = false
+    }
+  },
+  computed: {
+    ...mapState('user', {
+      token: state => state.token
+    })
+  }
 }
 </script>
 

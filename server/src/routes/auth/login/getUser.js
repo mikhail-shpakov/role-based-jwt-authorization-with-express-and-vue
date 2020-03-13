@@ -8,6 +8,10 @@ module.exports = async (username) => {
       where: { username }
     })
 
+    if (!user) {
+      return false
+    }
+
     return user.dataValues
   } catch (e) {
     console.log(e)

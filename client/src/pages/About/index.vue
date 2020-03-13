@@ -16,5 +16,5 @@ div.section
   .about-img
     background-image: url("../../assets/about.svg")
     background-size: 100% 100%
-    min-height: 280px
+    min-height: 220px
 </style>

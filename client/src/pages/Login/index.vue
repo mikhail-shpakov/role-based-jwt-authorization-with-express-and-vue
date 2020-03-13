@@ -6,7 +6,7 @@
       .has-text-centered
         p.auth-title.has-text-weight-medium.is-size-5.has-text-dark Авторизация
         p.auth-subtitle Войдите для доступа к защищённым маршрутам
-      form(@keyup.enter="LOGIN(authData)")
+      form(@keyup.enter="login(authData)")
         b-field(label="Логин")
           b-input(
             v-model.trim='authData.username'
@@ -19,7 +19,7 @@
           )
         .foot
           b-button.button.is-success(
-            @click='LOGIN(authData)'
+            @click='login(authData)'
             :loading="isLoading"
             :disabled="authData.username && authData.password === ''"
           ) Войти
@@ -44,9 +44,16 @@ export default {
       isLoading: false
     }
   },
-  methods: mapActions('user', [
-    'LOGIN'
-  ])
+  methods: {
+    ...mapActions('user', [
+      'LOGIN'
+    ]),
+    async login (authData) {
+      this.isLoading = true
+      await this.LOGIN(authData)
+      this.isLoading = false
+    }
+  }
 }
 </script>
 
