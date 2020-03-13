@@ -6,22 +6,22 @@
       .has-text-centered
         p.auth-title.has-text-weight-medium.is-size-5.has-text-dark Авторизация
         p.auth-subtitle Войдите для доступа к защищённым маршрутам
-      form(@keyup.enter="loginUser()")
+      form(@keyup.enter="LOGIN(authData)")
         b-field(label="Логин")
           b-input(
-            v-model.trim='userData.login'
+            v-model.trim='authData.username'
           )
         b-field(label="Пароль")
           b-input(
             type='password'
             password-reveal
-            v-model.trim='userData.password'
+            v-model.trim='authData.password'
           )
         .foot
           b-button.button.is-success(
-            @click='loginUser()'
+            @click='LOGIN(authData)'
             :loading="isLoading"
-            :disabled="userData.login && userData.password === ''"
+            :disabled="authData.username && authData.password === ''"
           ) Войти
     .tile.helper-data
       p Администратор:
@@ -31,25 +31,22 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Login',
   data () {
     return {
-      userData: {
-        login: '',
+      authData: {
+        username: '',
         password: ''
       },
       isLoading: false
     }
   },
-  methods: {
-    loginUser () {
-      this.isLoading = true
-
-      this.$router.push('servers')
-    }
-  }
+  methods: mapActions('user', [
+    'LOGIN'
+  ])
 }
 </script>
 
