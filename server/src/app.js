@@ -12,7 +12,11 @@ const app = express()
 const db = require('./db/models')
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.resolve(__dirname, '../client/dist')))
+  /**
+   * При публикации на heroku,
+   * статичное приложение vue будет отдавать express
+   */
+  app.use(express.static(path.resolve(__dirname, '../../client/dist')))
 }
 
 app.set('trust proxy', 1)
