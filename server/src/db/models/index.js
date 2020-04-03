@@ -37,5 +37,6 @@ db.Sequelize = Sequelize
 
 db.servers = require('./server')(sequelize, Sequelize)
 db.users = require('./user')(sequelize, Sequelize)
+db.session = require('./session')(sequelize, Sequelize)
 
 module.exports = db

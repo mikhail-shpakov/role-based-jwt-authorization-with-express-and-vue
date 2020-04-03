@@ -2,14 +2,14 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcryptjs')
 const getUser = require('./getUser')
-const setToken = require('./setToken')
+const createSession = require('./createSession')
 const validateSchema = require('./validateSchema')
-// const useragent = require('express-useragent')
+const useragent = require('express-useragent')
 
 router.post('/auth/login', validateSchema, async (req, res) => {
-  const { username, password } = req.body
-  // const ua = useragent.parse(req.headers['user-agent'])
-  // console.log(ua)
+  const { username, password, fingerprint } = req.body
+  const ua = useragent.parse(req.headers['user-agent'])
+  const ip = (req.headers['x-forwarded-for'] || req.connection.remoteAddress || '').split(',')[0].trim()
 
   const user = await getUser(username)
 
@@ -26,9 +26,9 @@ router.post('/auth/login', validateSchema, async (req, res) => {
       return
     }
 
-    const token = await setToken(user)
+    const sessionInfo = await createSession({ user, ua, ip, fingerprint })
 
-    await res.json({ token })
+    await res.json({ sessionInfo })
   })
 })
 

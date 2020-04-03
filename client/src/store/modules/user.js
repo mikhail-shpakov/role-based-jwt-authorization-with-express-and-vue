@@ -5,7 +5,8 @@ const jwt = require('jsonwebtoken')
 
 const state = {
   userInfo: {},
-  token: ''
+  token: '', // TODO поменять название на accessToken?
+  refreshToken: ''
 }
 
 const getters = {
@@ -34,7 +35,7 @@ const actions = {
         return
       }
 
-      await context.commit('SET_USER_DATA', request.data.token)
+      await context.commit('SET_USER_DATA', request.data.sessionInfo.accessToken)
       await router.push({ path: '/servers' })
     } catch (e) {
       console.error(e)

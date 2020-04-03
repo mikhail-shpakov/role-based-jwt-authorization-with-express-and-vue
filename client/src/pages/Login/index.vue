@@ -40,7 +40,8 @@ export default {
     return {
       authData: {
         username: '',
-        password: ''
+        password: '',
+        fingerprint: ''
       },
       isLoading: false
     }
@@ -51,24 +52,26 @@ export default {
     ]),
     async login (authData) {
       this.isLoading = true
-      await this.LOGIN(authData)
+      const LOGIN = this.LOGIN
+
+      Fingerprint2.get(async components => {
+        const values = components.map(component => component.value)
+        const fingerprint = Fingerprint2.x64hash128(values.join(''), 31)
+        await auth(fingerprint)
+      })
+
+      async function auth (fingerprint) {
+        authData.fingerprint = fingerprint
+        await LOGIN(authData, fingerprint)
+      }
+
       this.isLoading = false
+    },
+    getFingerprint () {
     }
   },
   mounted () {
-    if (window.requestIdleCallback) {
-      requestIdleCallback(function () {
-        Fingerprint2.get(function (components) {
-          console.log(components) // an array of components: {key: ..., value: ...}
-        })
-      })
-    } else {
-      setTimeout(function () {
-        Fingerprint2.get(function (components) {
-          console.log(components) // an array of components: {key: ..., value: ...}
-        })
-      }, 500)
-    }
+    this.getFingerprint()
   }
 }
 </script>

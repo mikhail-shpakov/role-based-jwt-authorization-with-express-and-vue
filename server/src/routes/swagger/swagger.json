@@ -33,6 +33,10 @@
                 "password": {
                   "description": "Password for user account",
                   "type": "string"
+                },
+                "fingerprint": {
+                  "description": "Browser fingerprint",
+                  "type": "string"
                 }
               }
             }
