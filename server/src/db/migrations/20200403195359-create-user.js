@@ -8,6 +8,9 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      userId: {
+        type: Sequelize.UUID
+      },
       username: {
         type: Sequelize.STRING
       },
@@ -15,24 +18,6 @@ module.exports = {
         type: Sequelize.STRING
       },
       role: {
-        type: Sequelize.STRING
-      },
-      userId: {
-        type: Sequelize.UUID
-      },
-      refreshToken: {
-        type: Sequelize.STRING
-      },
-      expiresIn: {
-        type: Sequelize.INTEGER
-      },
-      fingerprint: {
-        type: Sequelize.STRING
-      },
-      ua: {
-        type: Sequelize.STRING
-      },
-      ip: {
         type: Sequelize.STRING
       },
       createdAt: {
