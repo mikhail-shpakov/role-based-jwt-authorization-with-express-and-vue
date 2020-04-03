@@ -1,8 +1,9 @@
 {
+  "name": "backend-based-role-authorization",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Role based JWT demo project using Express and Vue",
   "author": "Mikhail Shpakov <mikhail.n.shpakov@gmail.com>",
-  "name": "backend-timeweb",
-  "version": "1.0.0",
-  "description": "Test task for Timeweb",
   "main": "src/server.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --ext js --watch src --exec 'npm run lint && node src/server.js'",
@@ -31,6 +32,7 @@
     "express": "^4.17.1",
     "express-jwt": "^5.3.1",
     "express-rate-limit": "^5.1.1",
+    "express-useragent": "^1.0.13",
     "helmet": "^3.21.3",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
@@ -39,6 +41,7 @@
     "pg": "^7.18.2",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.21.5",
-    "sequelize-cli": "^5.5.1"
+    "sequelize-cli": "^5.5.1",
+    "swagger-ui-express": "^4.1.4"
   }
 }

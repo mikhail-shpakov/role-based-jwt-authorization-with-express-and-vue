@@ -1,1 +1,1 @@
-module.exports = ['/auth/login']
+module.exports = ['/auth/login', /^\/swagger\//]

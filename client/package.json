@@ -2,7 +2,7 @@
   "name": "frontend-based-role-authorization",
   "version": "0.1.0",
   "private": true,
-  "description": "role-based-jwt-authorization-with-express-and-vue",
+  "description": "Role based JWT demo project using Express and Vue",
   "author": "Mikhail Shpakov <mikhail.n.shpakov@gmail.com> (https://shpakov.dev/)",
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -16,6 +16,7 @@
     "buefy": "^0.8.13",
     "core-js": "^3.6.4",
     "cross-env": "^7.0.2",
+    "fingerprintjs2": "^2.1.0",
     "jsonwebtoken": "^8.5.1",
     "material-design-icons": "^3.0.1",
     "normalize.css": "^8.0.1",

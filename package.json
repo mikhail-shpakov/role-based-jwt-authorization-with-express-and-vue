@@ -1,7 +1,7 @@
 {
   "name": "role-based-jwt-authorization-with-express-and-vue",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Role based JWT demo project using Express and Vue",
   "author": "Mikhail Shpakov <mikhail.n.shpakov@gmail.com> (https://shpakov.dev/)",
   "engines": {
     "node": "10.x"
@@ -14,7 +14,11 @@
   },
   "homepage": "https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue",
   "keywords": [
-    "Vue.js"
+    "Vue.js",
+    "Express.js",
+    "JWT",
+    "JWT permissions",
+    "Heroku"
   ],
   "license": "MIT",
   "repository": {

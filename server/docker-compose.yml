@@ -5,7 +5,7 @@ services:
     image: postgres:12.1-alpine
     restart: always
     environment:
-      POSTGRES_PASSWORD: test
+      POSTGRES_PASSWORD: dev_pass
     ports:
       - 5432:5432
     networks:
