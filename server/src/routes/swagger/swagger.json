@@ -50,7 +50,8 @@
             "description": "Success auth",
             "examples": {
               "application/json": {
-                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlYTU2MGVhZC1mMWJkLTRiOWMtYTNhYS02YWEzNzlhYmQ2MjUiLCJwZXJtaXNzaW9ucyI6WyJhZG1pbiJdLCJpYXQiOjE1ODU3Nzg5OTgsImV4cCI6MTU4NTc5MzM5OH0.c07m2Z7LkwSfJLYY_HjE4bimWwyhZqXZVo7s9-a_70o"
+                "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlYTU2MGVhZC1mMWJkLTRiOWMtYTNhYS02YWEzNzlhYmQ2MjUiLCJwZXJtaXNzaW9ucyI6WyJhZG1pbiJdLCJpYXQiOjE1ODU3Nzg5OTgsImV4cCI6MTU4NTc5MzM5OH0.c07m2Z7LkwSfJLYY_HjE4bimWwyhZqXZVo7s9-a_70o",
+                "refreshToken": "68ac980f-ca12-42ae-9373-6cb94e801968"
               }
             }
           },
@@ -63,31 +64,51 @@
         }
       }
     },
-    "/v2": {
-      "get": {
-        "operationId": "getVersionDetailsv2",
-        "summary": "Show API version details",
+    "/auth/refresh-tokens": {
+      "post": {
+        "operationId": "refresh-tokens",
+        "summary": "refresh-tokens",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User refresh tokens",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "refreshToken": {
+                  "description": "Refresh token that was stored on the frontend (uuid)",
+                  "type": "string"
+                },
+                "fingerprint": {
+                  "description": "Browser fingerprint",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
         "produces": [
           "application/json"
         ],
         "responses": {
           "200": {
-            "description": "200 203 response",
+            "description": "Tokens was success updated",
             "examples": {
-              "application/json": "{\n    \"version\": {\n        \"status\": \"CURRENT\",\n        \"updated\": \"2011-01-21T11:33:21Z\",\n        \"media-types\": [\n            {\n                \"base\": \"application/xml\",\n                \"type\": \"application/vnd.openstack.compute+xml;version=2\"\n            },\n            {\n                \"base\": \"application/json\",\n                \"type\": \"application/vnd.openstack.compute+json;version=2\"\n            }\n        ],\n        \"id\": \"v2.0\",\n        \"links\": [\n            {\n                \"href\": \"http://127.0.0.1:8774/v2/\",\n                \"rel\": \"self\"\n            },\n            {\n                \"href\": \"http://docs.openstack.org/api/openstack-compute/2/os-compute-devguide-2.pdf\",\n                \"type\": \"application/pdf\",\n                \"rel\": \"describedby\"\n            },\n            {\n                \"href\": \"http://docs.openstack.org/api/openstack-compute/2/wadl/os-compute-2.wadl\",\n                \"type\": \"application/vnd.sun.wadl+xml\",\n                \"rel\": \"describedby\"\n            },\n            {\n              \"href\": \"http://docs.openstack.org/api/openstack-compute/2/wadl/os-compute-2.wadl\",\n              \"type\": \"application/vnd.sun.wadl+xml\",\n              \"rel\": \"describedby\"\n            }\n        ]\n    }\n}"
+              "application/json": {
+                "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlYTU2MGVhZC1mMWJkLTRiOWMtYTNhYS02YWEzNzlhYmQ2MjUiLCJwZXJtaXNzaW9ucyI6WyJhZG1pbiJdLCJpYXQiOjE1ODU3Nzg5OTgsImV4cCI6MTU4NTc5MzM5OH0.c07m2Z7LkwSfJLYY_HjE4bimWwyhZqXZVo7s9-a_70o",
+                "refreshToken": "68ac980f-ca12-42ae-9373-6cb94e801968"
+              }
             }
           },
-          "203": {
-            "description": "200 203 response",
-            "examples": {
-              "application/json": "{\n    \"version\": {\n        \"status\": \"CURRENT\",\n        \"updated\": \"2011-01-21T11:33:21Z\",\n        \"media-types\": [\n            {\n                \"base\": \"application/xml\",\n                \"type\": \"application/vnd.openstack.compute+xml;version=2\"\n            },\n            {\n                \"base\": \"application/json\",\n                \"type\": \"application/vnd.openstack.compute+json;version=2\"\n            }\n        ],\n        \"id\": \"v2.0\",\n        \"links\": [\n            {\n                \"href\": \"http://23.253.228.211:8774/v2/\",\n                \"rel\": \"self\"\n            },\n            {\n                \"href\": \"http://docs.openstack.org/api/openstack-compute/2/os-compute-devguide-2.pdf\",\n                \"type\": \"application/pdf\",\n                \"rel\": \"describedby\"\n            },\n            {\n                \"href\": \"http://docs.openstack.org/api/openstack-compute/2/wadl/os-compute-2.wadl\",\n                \"type\": \"application/vnd.sun.wadl+xml\",\n                \"rel\": \"describedby\"\n            }\n        ]\n    }\n}"
-            }
+          "401": {
+            "description": "User with such credentials not found"
+          },
+          "500": {
+            "description": "Internal server error"
           }
         }
       }
     }
-  },
-  "consumes": [
-    "application/json"
-  ]
+  }
 }

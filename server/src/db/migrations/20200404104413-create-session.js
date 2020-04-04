@@ -9,10 +9,14 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
-        type: Sequelize.UUID
+        type: Sequelize.UUID,
+        references: {
+          model: 'Users',
+          key: 'userId'
+        }
       },
       refreshToken: {
-        type: Sequelize.STRING
+        type: Sequelize.UUID
       },
       ua: {
         type: Sequelize.STRING
@@ -24,7 +28,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       expiresIn: {
-        type: Sequelize.INTEGER
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,

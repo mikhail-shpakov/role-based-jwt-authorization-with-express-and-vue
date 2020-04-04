@@ -5,6 +5,9 @@
   "description": "Role based JWT demo project using Express and Vue",
   "author": "Mikhail Shpakov <mikhail.n.shpakov@gmail.com>",
   "main": "src/server.js",
+  "engines": {
+    "node": ">=8.3.0"
+  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --ext js --watch src --exec 'npm run lint && node src/server.js'",
     "start": "env NODE_ENV=production node src/server.js",

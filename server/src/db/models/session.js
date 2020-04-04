@@ -2,14 +2,15 @@
 module.exports = (sequelize, DataTypes) => {
   const Session = sequelize.define('Session', {
     userId: DataTypes.UUID,
-    refreshToken: DataTypes.STRING,
+    refreshToken: DataTypes.UUID,
     ua: DataTypes.STRING,
     fingerprint: DataTypes.STRING,
     ip: DataTypes.STRING,
-    expiresIn: DataTypes.INTEGER
+    expiresIn: DataTypes.DATE
   }, {})
   Session.associate = function (models) {
-    // associations can be defined here
+    Session.belongsTo(models.User, { targetKey: 'userId', foreignKey: 'userId' })
   }
+
   return Session
 }
