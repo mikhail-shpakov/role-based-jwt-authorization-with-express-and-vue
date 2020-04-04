@@ -102,7 +102,7 @@
             }
           },
           "401": {
-            "description": "User with such credentials not found"
+            "description": "Invalid refresh token"
           },
           "500": {
             "description": "Internal server error"
