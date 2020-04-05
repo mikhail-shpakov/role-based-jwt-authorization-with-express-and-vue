@@ -47,7 +47,8 @@ export default {
   },
   computed: {
     ...mapState('user', {
-      fingerprint: state => state.fingerprint
+      fingerprint: state => state.fingerprint,
+      accessToken: state => state.tokens.accessToken
     })
   },
   methods: {
@@ -61,7 +62,20 @@ export default {
       await this.LOGIN(this.authData)
 
       this.isLoading = false
+    },
+    async checkUserAuth () {
+      if (this.accessToken) {
+        await this.$router.push({ path: '/servers' })
+      }
     }
+  },
+  async created () {
+    /**
+     * Если пользователь авторизован
+     * и пытается перейти по прямой ссылке на страницу /login,
+     * то делаем редирект на страницу /servers
+     */
+    await this.checkUserAuth()
   }
 }
 </script>
