@@ -1,7 +1,7 @@
 import api from './entrypoint'
 import store from '../../store'
 import axios from 'axios'
-import failedToast from '../../helpers/failedToast'
+import toast from '../../helpers/programmaticToast'
 
 const user = store.getters['user/GET_USER']
 const publicPages = ['auth/login', 'auth/refresh-tokens']
@@ -29,7 +29,7 @@ const baseHttpReq = async (uri, method, params = null) => {
     .then(response => response)
     .catch(e => {
       if (!e.response || e.response.status !== 401) {
-        failedToast('При запросе на сервер произошла ошибка, попробуйте повторить позднее')
+        toast('При запросе на сервер произошла ошибка, попробуйте повторить позднее')
       }
       return e.response || e
     })

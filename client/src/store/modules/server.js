@@ -1,5 +1,6 @@
 import methods from '@/services/api/methods'
 import Vue from 'vue'
+import toast from '../../helpers/programmaticToast'
 
 const state = {
   serverList: []
@@ -12,6 +13,10 @@ const mutations = {
   EDIT_SERVER (state, newServerValue) {
     const indexChangedServer = state.serverList.findIndex(s => s.id === newServerValue.id)
     Vue.set(state.serverList, indexChangedServer, newServerValue)
+  },
+  DELETE_SERVER (state, id) {
+    const indexDeleteServer = state.serverList.findIndex(s => s.id === id)
+    state.serverList.splice(indexDeleteServer, 1)
   }
 }
 
@@ -33,6 +38,19 @@ const actions = {
 
       if (request.status === 204) {
         await context.commit('EDIT_SERVER', newServerValue)
+        toast('Изменения сохранены', 'is-success')
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  },
+  DELETE_SERVER: async (context, id) => {
+    try {
+      const request = await methods.extendHttpReq('server', 'delete', { data: { id } })
+
+      if (request.status === 204) {
+        await context.commit('DELETE_SERVER', id)
+        toast('Сервер удалён', 'is-success')
       }
     } catch (e) {
       console.error(e)

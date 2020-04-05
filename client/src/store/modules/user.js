@@ -1,6 +1,6 @@
 import methods from '@/services/api/methods'
 import router from '../../router'
-import failedToast from '../../helpers/failedToast'
+import toast from '../../helpers/programmaticToast'
 
 const jwt = require('jsonwebtoken')
 
@@ -48,7 +48,7 @@ const actions = {
       }
 
       if (request.status === 401) {
-        failedToast('Неверный логин или пароль')
+        toast('Неверный логин или пароль')
       }
     } catch (e) {
       console.error(e)
@@ -71,7 +71,7 @@ const actions = {
       if (request.status === 401) {
         await context.commit('REMOVE_USER_DATA')
         await router.push({ path: '/login' })
-        failedToast('Сессия истекла, необходимо заново пройти авторизацию')
+        toast('Сессия истекла, необходимо заново пройти авторизацию')
       }
 
       return false

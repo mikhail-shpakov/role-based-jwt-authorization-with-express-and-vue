@@ -1,14 +1,9 @@
 const db = require('../../../db/models/')
 const Server = db.servers
 
-module.exports = async (row) => {
-  const { serverName, serverType, id } = row
-
+module.exports = async (id) => {
   try { // TODO добавить транзакцию
-    await Server.update({
-      serverName,
-      serverType
-    }, {
+    await Server.destroy({
       where: { id }
     })
 

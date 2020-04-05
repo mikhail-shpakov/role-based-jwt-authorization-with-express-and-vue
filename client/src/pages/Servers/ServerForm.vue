@@ -31,11 +31,12 @@
       b-button(
         type="is-danger"
         icon-left="delete"
+        :loading="isLoadingDelete"
         @click="confirmDelete()"
       ) Удалить
       b-button(
         type="is-success"
-        :loading="isLoading"
+        :loading="isLoadingEdit"
         :disabled="isCheckStatusButton"
         @click="saveChanges()"
       ) Сохранить изменения
@@ -54,7 +55,8 @@ export default {
   },
   data () {
     return {
-      isLoading: false,
+      isLoadingEdit: false,
+      isLoadingDelete: false,
       local: {
         id: '',
         serverName: '',
@@ -64,14 +66,15 @@ export default {
   },
   methods: {
     ...mapActions('server', [
-      'EDIT_SERVER'
+      'EDIT_SERVER',
+      'DELETE_SERVER'
     ]),
     async saveChanges () {
       if (this.isCheckStatusButton) return
 
-      this.isLoading = true
+      this.isLoadingEdit = true
       await this.EDIT_SERVER(this.local)
-      this.isLoading = false
+      this.isLoadingEdit = false
     },
     confirmDelete () {
       this.$buefy.dialog.confirm({
@@ -79,8 +82,13 @@ export default {
         cancelText: 'Отмена',
         confirmText: 'Удалить',
         type: 'is-danger',
-        onConfirm: () => this.$buefy.toast.open('Удалён')
+        onConfirm: async () => { await this.deleteServer() }
       })
+    },
+    async deleteServer () {
+      this.isLoadingDelete = true
+      await this.DELETE_SERVER(this.local.id)
+      this.isLoadingDelete = false
     }
   },
   computed: {
@@ -121,7 +129,7 @@ export default {
 form.box
   border: 1px solid $color-alt
   border-radius: 8px
-  padding: 20px 10px 70px
+  padding: 20px 10px 110px
   box-shadow: none
   @media (min-width: $display-bp-mobile)
     padding: 20px 20px 70px

@@ -5,4 +5,5 @@ module.exports = app => {
   app.use(require('./auth/logout'))
   app.use(require('./server/get/'))
   app.use(require('./server/edit/'))
+  app.use(require('./server/delete/'))
 }
