@@ -1,20 +1,20 @@
-// const transaction = require('../../../db/transaction')
-//
-// module.exports = async (row) => {
-//   const {
-//     serverName,
-//     serverType,
-//     userId
-//   } = row
-//
-//   const sql = 'UPDATE servers SET serverName = $1, serverType = $2 WHERE userId = $3;'
-//   const value = [serverName, serverType, userId]
-//
-//   try {
-//     await transaction(sql, value)
-//     return true
-//   } catch (e) {
-//     console.log(e)
-//     return false
-//   }
-// }
+const db = require('../../../db/models/')
+const Server = db.servers
+
+module.exports = async (row) => {
+  const { serverName, serverType, id } = row
+
+  try {
+    await Server.update({
+      serverName,
+      serverType
+    }, {
+      where: { id }
+    })
+
+    return true
+  } catch (e) {
+    console.log(e)
+    return false
+  }
+}
