@@ -28,7 +28,6 @@
 import methods from '@/services/api/methods'
 import ServerList from './ServerList'
 import ServerForm from './ServerForm'
-import msgAfterServerReq from './mixins/msgAfterServerReq'
 
 export default {
   name: 'Servers',
@@ -36,9 +35,6 @@ export default {
     ServerList,
     ServerForm
   },
-  mixins: [
-    msgAfterServerReq
-  ],
   data () {
     return {
       selected: {},
@@ -48,24 +44,14 @@ export default {
   },
   methods: {
     async fetchServerList () {
-      const isFailed = () => {
-        this.msgAfterServerReq(
-          'При загрузки данных произошла ошибка, попробуйте повторить позднее',
-          'is-danger'
-        )
-      }
-
       try {
         const request = await methods.extendHttpReq('server')
 
-        if (request.status !== 200) {
-          isFailed()
+        if (request.status === 200) {
+          this.list = request.data
         }
-
-        this.list = request.data
       } catch (e) {
-        isFailed()
-        throw e
+        console.error(e)
       } finally {
         this.isLoading = false
       }

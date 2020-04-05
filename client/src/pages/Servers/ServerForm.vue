@@ -37,13 +37,9 @@
 
 <script>
 import methods from '@/services/api/methods'
-import msgAfterServerReq from './mixins/msgAfterServerReq'
 
 export default {
   name: 'serverForm',
-  mixins: [
-    msgAfterServerReq
-  ],
   props: {
     selected: {
       type: Object,
@@ -66,26 +62,15 @@ export default {
 
       this.isLoading = true
 
-      const isFailed = () => {
-        this.msgAfterServerReq(
-          'При сохранении произошла ошибка, попробуйте повторить позднее',
-          'is-danger'
-        )
-      }
-
       try {
         const request = await methods.patchData('server', this.local)
 
-        if (request.status !== 200) {
-          isFailed()
-          return
+        if (request.status === 200) {
+          this.$emit('changeServer', this.local)
+          this.msgAfterServerReq('Изменения сохранены')
         }
-
-        this.$emit('changeServer', this.local)
-        this.msgAfterServerReq('Изменения сохранены')
       } catch (e) {
-        isFailed()
-        throw e
+        console.error(e)
       } finally {
         this.isLoading = false
       }

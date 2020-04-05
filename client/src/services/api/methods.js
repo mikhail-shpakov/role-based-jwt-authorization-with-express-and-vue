@@ -28,8 +28,10 @@ const baseHttpReq = async (uri, method = 'get', params = null) => {
   return api()[method](uri, params)
     .then(response => response)
     .catch(e => {
-      failedToast('При запросе на сервер произошла ошибка, попробуйте повторить позднее')
-      return e
+      if (!e.response || e.response.status !== 401) {
+        failedToast('При запросе на сервер произошла ошибка, попробуйте повторить позднее')
+      }
+      return e.response || e
     })
 }
 

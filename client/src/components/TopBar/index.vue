@@ -15,9 +15,8 @@
     template(slot='start')
       b-button.is-text(
         tag="router-link"
-        to="Servers"
-        v-if="accessToken"
-      ) Сервера
+        :to="accessToken ? 'Servers' : 'Login'"
+      ) {{ accessToken ? 'Сервера' :  'Войти' }}
 
     template(slot='end')
       b-button.is-text(
