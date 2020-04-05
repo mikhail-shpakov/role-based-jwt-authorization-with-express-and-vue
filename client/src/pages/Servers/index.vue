@@ -56,7 +56,7 @@ export default {
       }
 
       try {
-        const request = await methods.httpReq('server')
+        const request = await methods.extendHttpReq('server')
 
         if (request.status !== 200) {
           isFailed()

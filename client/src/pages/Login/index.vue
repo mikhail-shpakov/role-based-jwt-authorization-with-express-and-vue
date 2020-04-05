@@ -6,7 +6,7 @@
       .has-text-centered
         p.auth-title.has-text-weight-medium.is-size-5.has-text-dark Авторизация
         p.auth-subtitle Войдите для доступа к защищённым маршрутам
-      form(@keyup.enter="login(authData)")
+      form(@keyup.enter="login()")
         b-field(label="Логин")
           b-input(
             v-model.trim='authData.username'
@@ -19,7 +19,7 @@
           )
         .foot
           b-button.button.is-success(
-            @click='login(authData)'
+            @click='login()'
             :loading="isLoading"
             :disabled="authData.username && authData.password === ''"
           ) Войти
@@ -31,8 +31,7 @@
 </template>
 
 <script>
-import Fingerprint2 from 'fingerprintjs2'
-import { mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 
 export default {
   name: 'Login',
@@ -46,32 +45,23 @@ export default {
       isLoading: false
     }
   },
+  computed: {
+    ...mapState('user', {
+      fingerprint: state => state.fingerprint
+    })
+  },
   methods: {
     ...mapActions('user', [
       'LOGIN'
     ]),
-    async login (authData) {
+    async login () {
       this.isLoading = true
-      const LOGIN = this.LOGIN
 
-      Fingerprint2.get(async components => {
-        const values = components.map(component => component.value)
-        const fingerprint = Fingerprint2.x64hash128(values.join(''), 31)
-        await auth(fingerprint)
-      })
-
-      async function auth (fingerprint) {
-        authData.fingerprint = fingerprint
-        await LOGIN(authData, fingerprint)
-      }
+      this.authData.fingerprint = this.fingerprint
+      await this.LOGIN(this.authData)
 
       this.isLoading = false
-    },
-    getFingerprint () {
     }
-  },
-  mounted () {
-    this.getFingerprint()
   }
 }
 </script>

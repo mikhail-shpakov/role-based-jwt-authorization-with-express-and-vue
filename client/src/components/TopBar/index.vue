@@ -16,7 +16,7 @@
       b-button.is-text(
         tag="router-link"
         to="Servers"
-        v-if="token"
+        v-if="accessToken"
       ) Сервера
 
     template(slot='end')
@@ -35,7 +35,7 @@
         tag="a"
         @click="logout"
         :loading="isLoading"
-        v-if="token"
+        v-if="accessToken"
       ) Выйти
 </template>
 
@@ -49,6 +49,11 @@ export default {
       isLoading: false
     }
   },
+  computed: {
+    ...mapState('user', {
+      accessToken: state => state.tokens.accessToken
+    })
+  },
   methods: {
     ...mapActions('user', [
       'LOGOUT'
@@ -58,11 +63,6 @@ export default {
       await this.LOGOUT()
       this.isLoading = false
     }
-  },
-  computed: {
-    ...mapState('user', {
-      token: state => state.token
-    })
   }
 }
 </script>
