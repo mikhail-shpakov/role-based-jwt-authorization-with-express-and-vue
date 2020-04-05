@@ -24,7 +24,7 @@ const checkExpiredAccessToken = async (uri) => {
   return true
 }
 
-const baseHttpReq = async (uri, method = 'get', params = null) => {
+const baseHttpReq = async (uri, method, params = null) => {
   return api()[method](uri, params)
     .then(response => response)
     .catch(e => {

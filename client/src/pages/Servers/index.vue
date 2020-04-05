@@ -3,8 +3,6 @@
   .column.is-half
     server-list(
       @selectServer="selectServer"
-      :data="list"
-      :isLoading="isLoading"
     )
   .column.form
     transition(
@@ -18,13 +16,14 @@
         .img-empty
         p.has-text-centered Сервер для редактирования не выбран
       server-form(
-        @changeServer="changeServer"
         :selected="selected"
         v-else
       )
 </template>
 
 <script>
+// FIXME при удалении перестаёт рабоать о_0
+// eslint-disable-next-line no-unused-vars
 import methods from '@/services/api/methods'
 import ServerList from './ServerList'
 import ServerForm from './ServerForm'
@@ -37,40 +36,13 @@ export default {
   },
   data () {
     return {
-      selected: {},
-      list: [],
-      isLoading: true
+      selected: {}
     }
   },
   methods: {
-    async fetchServerList () {
-      try {
-        const request = await methods.extendHttpReq('server')
-
-        if (request.status === 200) {
-          this.list = request.data
-        }
-      } catch (e) {
-        console.error(e)
-      } finally {
-        this.isLoading = false
-      }
-    },
     selectServer (value) {
       this.selected = value
-    },
-    changeServer (value) {
-      this.list.forEach((e, index) => {
-        if (e.id === value.id) {
-          this.$set(this.list, index, value)
-        }
-      })
-
-      this.selected = {}
     }
-  },
-  async mounted () {
-    await this.fetchServerList()
   }
 }
 </script>

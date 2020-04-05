@@ -27,16 +27,22 @@
           :value="option"
         ) {{ option }}
 
-    b-button.is-pulled-right.button-custom(
-      type="is-success"
-      :loading="isLoading"
-      :disabled="isCheckStatusButton"
-      @click="saveChanges()"
-    ) Сохранить изменения
+    .buttons.is-pulled-right.button-custom
+      b-button(
+        type="is-danger"
+        icon-left="delete"
+        @click="confirmDelete()"
+      ) Удалить
+      b-button(
+        type="is-success"
+        :loading="isLoading"
+        :disabled="isCheckStatusButton"
+        @click="saveChanges()"
+      ) Сохранить изменения
 </template>
 
 <script>
-import methods from '@/services/api/methods'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'serverForm',
@@ -57,23 +63,24 @@ export default {
     }
   },
   methods: {
+    ...mapActions('server', [
+      'EDIT_SERVER'
+    ]),
     async saveChanges () {
       if (this.isCheckStatusButton) return
 
       this.isLoading = true
-
-      try {
-        const request = await methods.patchData('server', this.local)
-
-        if (request.status === 200) {
-          this.$emit('changeServer', this.local)
-          this.msgAfterServerReq('Изменения сохранены')
-        }
-      } catch (e) {
-        console.error(e)
-      } finally {
-        this.isLoading = false
-      }
+      await this.EDIT_SERVER(this.local)
+      this.isLoading = false
+    },
+    confirmDelete () {
+      this.$buefy.dialog.confirm({
+        message: `Удалить сервер с названием <strong>${this.local.serverName}</strong>?`,
+        cancelText: 'Отмена',
+        confirmText: 'Удалить',
+        type: 'is-danger',
+        onConfirm: () => this.$buefy.toast.open('Удалён')
+      })
     }
   },
   computed: {
@@ -99,9 +106,7 @@ export default {
          * Чтобы не менять props напрямую,
          * перезаписываем значения в $data.local
          */
-        Object.keys(this.local).forEach(i => {
-          this.local[i] = this.selected[i]
-        })
+        this.local = Object.assign({}, this.selected)
       },
       immediate: true
     }

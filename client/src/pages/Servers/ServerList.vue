@@ -4,9 +4,11 @@
   p.subtitle
     | Нажмите на любой сервер, чтобы начать редактирование
     |  и Esc, чтобы выйти из режима редактирования
+
+  a Добавить сервер
   .table-box
     b-table(
-      :data="data"
+      :data="serverList"
       :columns="columns"
       :loading="isLoading"
       :selected.sync="selected"
@@ -14,7 +16,7 @@
       striped
     )
       template(slot='footer')
-        .has-text-right Серверов всего: {{ data.length }}
+        .has-text-right Серверов всего: {{ serverList.length }}
 
       template(slot='empty')
           section.section
@@ -28,20 +30,13 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
+
 export default {
   name: 'serverList',
-  props: {
-    data: {
-      type: Array,
-      required: true
-    },
-    isLoading: {
-      type: Boolean,
-      required: true
-    }
-  },
   data () {
     return {
+      isLoading: true,
       selected: {},
       columns: [
         {
@@ -60,7 +55,19 @@ export default {
       ]
     }
   },
+  computed: {
+    ...mapState('server', {
+      serverList: state => state.serverList
+    })
+  },
   methods: {
+    ...mapActions('server', [
+      'GET_SERVER_LIST'
+    ]),
+    async fetchServerList () {
+      await this.GET_SERVER_LIST()
+      this.isLoading = false
+    },
     addListenerEsc () {
       document.addEventListener('keyup', e => {
         if (e.code === 'Escape') this.selected = {}
@@ -70,9 +77,16 @@ export default {
   watch: {
     selected () {
       this.$emit('selectServer', this.selected)
+    },
+    serverList: {
+      handler () {
+        this.selected = {}
+      },
+      deep: true
     }
   },
-  mounted () {
+  async mounted () {
+    await this.fetchServerList()
     this.addListenerEsc()
   }
 }
@@ -82,14 +96,15 @@ export default {
 div.table-box
   border: 1px solid $color-alt
   border-radius: 8px
+  margin-top: 10px
   padding: 20px 10px 15px
   @media (min-width: $display-bp-mobile)
     padding: 22px 20px 20px
 
 p.subtitle
   color: $color-alt
-  font-size: 1rem
-  margin: -1rem 0 2rem !important
+  font-size: 15px
+  margin: -1rem 0 1.5rem !important
 </style>
 
 <style lang="sass">

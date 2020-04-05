@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import user from './modules/user'
+import server from './modules/server'
 
 Vue.use(Vuex)
 
@@ -9,7 +10,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
   plugins: [createPersistedState()],
   modules: {
-    user
+    user,
+    server
   }
 })
 
