@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --ext js --watch src --exec 'npm run lint && node src/server.js'",
-    "start": "env NODE_ENV=production node src/server.js",
+    "start": "env NODE_ENV=production NODE_TLS_REJECT_UNAUTHORIZED='0' node src/server.js",
     "lint": "npx eslint .",
     "test:unit": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles"
   },
