@@ -128,7 +128,7 @@ p.subtitle
 
 <style lang="sass">
 @media (max-width: $display-bp-mobile)
-  div.b-table.has-mobile-cards tr
+  div.b-table .has-mobile-cards table.table tr
     box-shadow: none
     border-radius: 6px
     border: 1px solid $color-alt
