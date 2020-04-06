@@ -1,6 +1,7 @@
 import methods from '@/services/api/methods'
 import router from '../../router'
 import toast from '../../helpers/programmaticToast'
+import store from '../index'
 
 const jwt = require('jsonwebtoken')
 
@@ -90,6 +91,7 @@ const actions = {
       )
 
       if (request.status === 200) {
+        await store.commit('server/REMOVE_SERVER_LIST')
         await context.commit('REMOVE_USER_DATA')
         await router.push({ path: '/login' })
       }

@@ -20,6 +20,9 @@ const mutations = {
   DELETE_SERVER (state, id) {
     const indexDeletedServer = state.serverList.findIndex(s => s.id === id)
     state.serverList.splice(indexDeletedServer, 1)
+  },
+  REMOVE_SERVER_LIST (state) {
+    state.serverList = []
   }
 }
 
