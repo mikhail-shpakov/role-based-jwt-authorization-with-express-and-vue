@@ -1,9 +1,10 @@
 const express = require('express')
 const router = express.Router()
+const guard = require('express-jwt-permissions')()
 const validateSchema = require('./validateSchema')
 const editServer = require('./editServer')
 
-router.patch('/server/', validateSchema, async (req, res) => {
+router.patch('/server/', validateSchema, guard.check('admin'), async (req, res) => {
   const edit = await editServer(req.body)
 
   if (!edit) {
