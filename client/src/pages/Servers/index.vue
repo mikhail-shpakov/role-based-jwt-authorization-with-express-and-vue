@@ -24,7 +24,6 @@
 </template>
 
 <script>
-// FIXME при удалении перестаёт рабоать о_0
 // eslint-disable-next-line no-unused-vars
 import methods from '@/services/api/methods'
 import { mapState } from 'vuex'
