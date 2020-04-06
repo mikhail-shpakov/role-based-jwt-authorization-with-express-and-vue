@@ -28,6 +28,11 @@ router.post('/auth/login', validateSchema, async (req, res) => {
 
     const sessionInfo = await createSession({ user, ua, ip, fingerprint })
 
+    if (sessionInfo.error) {
+      await res.sendStatus(sessionInfo.error)
+      return
+    }
+
     await res.json({ ...sessionInfo })
   })
 })

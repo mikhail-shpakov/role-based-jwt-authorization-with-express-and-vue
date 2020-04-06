@@ -4,15 +4,17 @@ const Server = db.servers
 module.exports = async (row) => {
   const { serverName, serverType, id } = row
 
-  try { // TODO добавить транзакцию
-    await Server.update({
-      serverName,
-      serverType
-    }, {
-      where: { id }
-    })
+  try {
+    return await db.sequelize.transaction(async (t) => {
+      await Server.update({
+        serverName,
+        serverType
+      }, {
+        where: { id }
+      }, { transaction: t })
 
-    return true
+      return true
+    })
   } catch (e) {
     console.log(e)
     return false

@@ -2,16 +2,12 @@ const jwt = require('jsonwebtoken')
 const jwtSecret = require('../../../config/jwtSecret')
 
 module.exports = async (user) => {
-  const token = jwt.sign(
+  return jwt.sign(
     {
       userId: user.userId,
       permissions: [user.role]
     },
     jwtSecret.secret,
-    { expiresIn: '4h' }
+    { expiresIn: '10m' }
   )
-
-  // TODO сохранять в БД токен
-
-  return token
 }

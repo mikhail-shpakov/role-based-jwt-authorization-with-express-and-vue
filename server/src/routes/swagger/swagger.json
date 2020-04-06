@@ -13,9 +13,19 @@
       "url": "https://shpakov.dev"
     }
   },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
   "paths": {
     "/auth/login": {
       "post": {
+        "tags": ["auth"],
         "operationId": "login",
         "summary": "login",
         "parameters": [
@@ -66,6 +76,7 @@
     },
     "/auth/refresh-tokens": {
       "post": {
+        "tags": ["auth"],
         "operationId": "refresh-tokens",
         "summary": "refresh-tokens",
         "parameters": [
@@ -103,6 +114,74 @@
           },
           "401": {
             "description": "Invalid refresh token"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "tags": ["auth"],
+        "operationId": "logout",
+        "summary": "logout",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User refresh tokens",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "refreshToken": {
+                  "description": "Refresh token that was stored on the frontend (uuid)",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Session success removed, user logout"
+          },
+          "401": {
+            "description": "Invalid refresh token"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/server": {
+      "get": {
+        "tags": ["server"],
+        "operationId": "get server list",
+        "summary": "get server list",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Server list success received"
+          },
+          "401": {
+            "description": "Invalid access token"
           },
           "500": {
             "description": "Internal server error"

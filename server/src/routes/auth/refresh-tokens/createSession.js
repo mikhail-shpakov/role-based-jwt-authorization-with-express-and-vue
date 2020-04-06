@@ -9,17 +9,19 @@ module.exports = async (sessionInfo) => {
   const refreshToken = uuidV4()
   const expiresIn = new Date(new Date().getTime() + 30 * 24 * 60 * 60 * 1000) // 30 дней
 
-  try { // TODO добавить транзакцию
-    await Session.create({
-      userId: userId,
-      refreshToken,
-      ua,
-      ip,
-      fingerprint,
-      expiresIn
-    })
+  try {
+    return await db.sequelize.transaction(async (t) => {
+      await Session.create({
+        userId: userId,
+        refreshToken,
+        ua,
+        ip,
+        fingerprint,
+        expiresIn
+      }, { transaction: t })
 
-    return { accessToken, refreshToken }
+      return { accessToken, refreshToken }
+    })
   } catch (e) {
     console.error(e)
     return { error: 500 }

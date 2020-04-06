@@ -3,7 +3,7 @@ const { Session, User } = db
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
-function deleteSession (refreshToken) { // TODO добавить транзакцию
+function deleteSession (refreshToken) {
   /**
    * Удаляем сессию из БД
    * и возвращаем информацию об этой сессии
@@ -20,9 +20,12 @@ function deleteSession (refreshToken) { // TODO добавить транзак�
       }
     }]
   }).then((result) => {
-    return Session.destroy({
-      where: { refreshToken }
-    }).then(() => result)
+    return db.sequelize.transaction(async (t) => {
+      return Session.destroy({
+        where: { refreshToken }
+      }, { transaction: t })
+        .then(() => result)
+    })
   })
 }
 
