@@ -13,8 +13,10 @@
       div(
         v-if="!('id' in selected)"
       )
-        .img-empty
-        p.has-text-centered Сервер для редактирования не выбран
+        .img(
+          :class="{ 'choice': role === 'admin', 'not-allowed': role === 'user' }"
+        )
+        p.has-text-centered {{ imgSubtitle }}
       server-form(
         :selected="selected"
         v-else
@@ -25,6 +27,7 @@
 // FIXME при удалении перестаёт рабоать о_0
 // eslint-disable-next-line no-unused-vars
 import methods from '@/services/api/methods'
+import { mapState } from 'vuex'
 import ServerList from './ServerList'
 import ServerForm from './ServerForm'
 
@@ -37,6 +40,16 @@ export default {
   data () {
     return {
       selected: {}
+    }
+  },
+  computed: {
+    ...mapState('user', {
+      role: state => Object.keys(state.userInfo).length ? state.userInfo.permissions[0] : 'user'
+    }),
+    imgSubtitle () {
+      return this.role === 'admin'
+        ? 'Сервер для редактирования не выбран'
+        : 'Добавлять, удалять и редактировать сервера может только администратор'
     }
   },
   methods: {
@@ -55,13 +68,17 @@ div.columns
     @media (min-width: $display-bp-desktop)
       padding-left: 50px
       display: flex
-      align-items: center
       justify-content: center
 
-    div.img-empty
-      background-image: url("../../assets/choice.svg")
+    div.img
       background-size: 100% 100%
       min-height: 350px
-      @media (min-width: $display-bp-desktop)
-        min-width: 330px
+      &.not-allowed
+        background-image: url("../../assets/not-allowed.svg")
+        margin: auto
+        max-width: 240px
+      &.choice
+        background-image: url("../../assets/choice.svg")
+        @media (min-width: $display-bp-desktop)
+          min-width: 330px
 </style>

@@ -14,9 +14,12 @@ const mutations = {
     const indexChangedServer = state.serverList.findIndex(s => s.id === newServerValue.id)
     Vue.set(state.serverList, indexChangedServer, newServerValue)
   },
+  ADD_SERVER (state, newServerValue) {
+    state.serverList.push(newServerValue)
+  },
   DELETE_SERVER (state, id) {
-    const indexDeleteServer = state.serverList.findIndex(s => s.id === id)
-    state.serverList.splice(indexDeleteServer, 1)
+    const indexDeletedServer = state.serverList.findIndex(s => s.id === id)
+    state.serverList.splice(indexDeletedServer, 1)
   }
 }
 
@@ -39,6 +42,19 @@ const actions = {
       if (request.status === 204) {
         await context.commit('EDIT_SERVER', newServerValue)
         toast('Изменения сохранены', 'is-success')
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  },
+  ADD_SERVER: async (context, newServerValue) => {
+    try {
+      const request = await methods.extendHttpReq('server', 'post', newServerValue)
+
+      if (request.status === 200) {
+        newServerValue.id = request.data.id
+        await context.commit('ADD_SERVER', newServerValue)
+        toast('Сервер добавлен', 'is-success')
       }
     } catch (e) {
       console.error(e)

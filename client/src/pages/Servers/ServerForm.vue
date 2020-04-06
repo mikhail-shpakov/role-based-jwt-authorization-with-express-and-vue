@@ -1,14 +1,15 @@
 <template lang="pug">
 .container
-  .title.is-size-4 Редактировать
+  .title.is-size-4 {{ selected.id ? 'Редактировать' : 'Новый сервер' }}
   form.box(
     @submit.prevent="saveChanges"
   )
-    p
-      strong ID:
-      |  {{ selected.id }}
+    template(v-if="selected.id")
+      p
+        strong ID:
+        |  {{ selected.id }}
 
-    .divider
+      .divider
 
     b-field(label="Название сервера")
       b-input(
@@ -29,6 +30,7 @@
 
     .buttons.is-pulled-right.button-custom
       b-button(
+        v-if="selected.id"
         type="is-danger"
         icon-left="delete"
         :loading="isLoadingDelete"
@@ -36,10 +38,10 @@
       ) Удалить
       b-button(
         type="is-success"
-        :loading="isLoadingEdit"
+        :loading="isLoadingChanges"
         :disabled="isCheckStatusButton"
-        @click="saveChanges()"
-      ) Сохранить изменения
+        @click="saveChanges(selected.id ? 'edit' : 'add')"
+      ) {{ selected.id ? 'Сохранить изменения' : 'Добавить сервер' }}
 </template>
 
 <script>
@@ -55,7 +57,7 @@ export default {
   },
   data () {
     return {
-      isLoadingEdit: false,
+      isLoadingChanges: false,
       isLoadingDelete: false,
       local: {
         id: '',
@@ -67,14 +69,19 @@ export default {
   methods: {
     ...mapActions('server', [
       'EDIT_SERVER',
+      'ADD_SERVER',
       'DELETE_SERVER'
     ]),
-    async saveChanges () {
+    async saveChanges (action) {
       if (this.isCheckStatusButton) return
 
-      this.isLoadingEdit = true
-      await this.EDIT_SERVER(this.local)
-      this.isLoadingEdit = false
+      this.isLoadingChanges = true
+
+      action === 'edit'
+        ? await this.EDIT_SERVER(this.local)
+        : await this.ADD_SERVER({ serverName: this.local.serverName, serverType: this.local.serverType })
+
+      this.isLoadingChanges = false
     },
     confirmDelete () {
       this.$buefy.dialog.confirm({
@@ -98,8 +105,7 @@ export default {
        * поля в форме должны быть не пустыми
        * и отличаться от уже установленных значений
        */
-      const checkEmpty = Object.values(this.local).filter(i => i)
-      if (checkEmpty.length < 3) return true
+      if (this.local.serverName.length < 3) return true
 
       const checkDifValue = Object.keys(this.local).some(v =>
         this.local[v] !== this.selected[v]

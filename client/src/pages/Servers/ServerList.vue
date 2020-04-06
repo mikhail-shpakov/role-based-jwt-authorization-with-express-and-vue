@@ -1,11 +1,12 @@
 <template lang="pug">
 .container
   p.title.is-size-4 Список серверов
-  p.subtitle
-    | Нажмите на любой сервер, чтобы начать редактирование
-    |  и Esc, чтобы выйти из режима редактирования
+  p.subtitle {{ subtitleText }}
 
-  a Добавить сервер
+  a(
+    v-if="role === 'admin'"
+    @click="addServer()"
+  ) Добавить сервер
   .table-box
     b-table(
       :data="serverList"
@@ -58,7 +59,15 @@ export default {
   computed: {
     ...mapState('server', {
       serverList: state => state.serverList
-    })
+    }),
+    ...mapState('user', {
+      role: state => Object.keys(state.userInfo).length ? state.userInfo.permissions[0] : 'user'
+    }),
+    subtitleText () {
+      return this.role === 'admin'
+        ? 'Нажмите на любой сервер, чтобы начать редактирование и Esc, чтобы выйти из режима редактирования'
+        : 'Пользователь может только просматривать список серверов'
+    }
   },
   methods: {
     ...mapActions('server', [
@@ -72,11 +81,21 @@ export default {
       document.addEventListener('keyup', e => {
         if (e.code === 'Escape') this.selected = {}
       })
+    },
+    addServer () {
+      const emptyData = {
+        id: 0,
+        serverName: '',
+        serverType: 'dedicated'
+      }
+      this.$emit('selectServer', emptyData)
     }
   },
   watch: {
     selected () {
-      this.$emit('selectServer', this.selected)
+      if (this.role === 'admin') {
+        this.$emit('selectServer', this.selected)
+      }
     },
     serverList: {
       handler () {

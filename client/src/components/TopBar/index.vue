@@ -1,6 +1,6 @@
 <template lang="pug">
 .section.is-vertical-center
-  b-navbar.navbar-custom
+  b-navbar.navbar-custom(fixed-top)
     template(slot="brand")
       b-navbar-item.item-logo(
         href="https://shpakov.dev/"
@@ -70,7 +70,6 @@ export default {
 div.section
   border-bottom: 1px solid $color-alt
   padding: 0
-  vertical-align: center
   @media (min-width: $display-bp-desktop)
     padding: 0.75rem 0
 
