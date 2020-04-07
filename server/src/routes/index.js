@@ -1,5 +1,4 @@
 module.exports = app => {
-  app.use(require('./swagger/'))
   app.use(require('./auth/login/'))
   app.use(require('./auth/refresh-tokens/'))
   app.use(require('./auth/logout'))
