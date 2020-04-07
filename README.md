@@ -162,7 +162,7 @@
    npm run test:unit // запуск unit тестов
    ```
 
-6. **Запуск локального `Frontend` сервера**
+6. **Запуск `Frontend` сервера для разработки**
 
     В качестве `Frontend` сервера для разработки используется
     [Webpack Dev Server](https://github.com/webpack/webpack-dev-server).
