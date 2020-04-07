@@ -1,6 +1,7 @@
 # Авторизация на основе ролей с использованием Express и Vue
 ![Heroku](https://heroku-badge.herokuapp.com/?app=https://role-based-auth-express-vue.herokuapp.com/)
 ![Dependencies](https://david-dm.org/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue.svg)
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 
 :ru: by Mikhail Shpakov
 
@@ -14,7 +15,7 @@
 [описанием](https://gist.github.com/zmts/802dc9c3510d79fd40f9dc38a12bccfc)
 и реализует работу с Access и Refresh токенами, а также мультилогин.
 
-🕺🕺:tada: [Демо](https://role-based-auth-express-vue.herokuapp.com/)
+:tada: [Демо](https://role-based-auth-express-vue.herokuapp.com/)
 
 :books: [Swagger](https://role-based-auth-express-vue.herokuapp.com/swagger/)
 
@@ -74,13 +75,13 @@
 [Webpack Dev Server](https://github.com/webpack/webpack-dev-server) для `Frontend`
 и [nodemon](https://nodemon.io/) для `Backend`. 
 
-1. Загрузка проекта на локальную машину
+1. **Загрузка проекта на локальную машину**
 
     ```
     git clone https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue
     ```
 
-2. Установка зависимостей
+2. **Установка зависимостей**
 
     ```
     npm ci
@@ -90,7 +91,7 @@
     так как они будут взяты из `package-lock.json`.  
     Зависимости требуется установить отдельно для `frontend` и для `backend` из их поддиректорий.
 
-3. Запуск Docker контейнеров с [PostgreSQL](https://www.postgresql.org/) и [Adminer](https://www.adminer.org/)
+3. **Запуск Docker контейнеров с [PostgreSQL](https://www.postgresql.org/) и [Adminer](https://www.adminer.org/)**
 
     Для локальной разработки используется [Docker](https://www.docker.com/) и
     [Docker Compose](https://docs.docker.com/compose/). Если они у вас ещё не установлены,
@@ -118,7 +119,7 @@
    База данных: // оставьте это поле пустым
     ```
 
-4. Создание БД и запуск миграций
+4. **Создание БД и запуск миграций**
 
    Для начала разработки небходимо создать базу данных,
    добавить таблицы в соответствии с [SQL схемой](#sql_scheme)
@@ -137,7 +138,7 @@
    npx sequelize-cli db:seed:all 
    ```
 
-5. Запуск `backend` сервера для разработки
+5. **Запуск `backend` сервера для разработки**
 
     В качестве `Backend` сервера для разработки используется [nodemon](https://nodemon.io/). 
 
@@ -162,7 +163,7 @@
    npm run test:unit // запуск unit тестов
    ```
 
-6. Запуск локального `Frontend` сервера
+6. **Запуск локального `Frontend` сервера**
 
     В качестве `Frontend` сервера для разработки используется
     [Webpack Dev Server](https://github.com/webpack/webpack-dev-server).
@@ -188,7 +189,8 @@
 
 ![SQL схема БД](https://cdn1.savepice.ru/uploads/2020/4/7/768657c7d5009b2915cdff49efbd9ce3-full.png)
 
-SQL схема была разработана с помощью [dbdiagram.io](https://dbdiagram.io)  
+SQL схема была разработана с помощью [dbdiagram.io](https://dbdiagram.io).
+
 Вы можете склонировать [схему этого проекта](https://dbdiagram.io/d/5e8725884495b02c3b8933e8).
 
 ## <a name="deploy"></a>Деплой на Heroku
