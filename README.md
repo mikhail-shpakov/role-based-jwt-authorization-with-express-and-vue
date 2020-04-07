@@ -1,7 +1,6 @@
 # Авторизация на основе ролей с использованием Express и Vue
-![Heroku](https://heroku-badge.herokuapp.com/?app=https://role-based-auth-express-vue.herokuapp.com/)
-![Dependencies](https://david-dm.org/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue.svg)
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+![Heroku](https://heroku-badge.herokuapp.com/?app=role-based-auth-express-vue)
 
 :ru: by Mikhail Shpakov
 
