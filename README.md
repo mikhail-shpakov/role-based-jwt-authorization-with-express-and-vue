@@ -38,6 +38,8 @@
 ([Webpack](https://webpack.js.org/),
 [Babel](https://babeljs.io/),
 [Postcss](https://postcss.org/))
+- [prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin)
+(для страницы "О приложении")
 - [Axios](https://github.com/axios/axios)
 - [Jest](https://jestjs.io/)
 - [Eslint](https://eslint.org/) ([standard style](https://standardjs.com/))
@@ -250,15 +252,15 @@ SQL схема была разработана с помощью [dbdiagram.io](
         Для реализации такого алгоритма работы необходимо на любом устройстве,
         которое у вас работает в течении всего дня или круглосуточно
         (идеальный вариант - какой-нибудь сервер, но и домашний компьютер подойдёт),
-        настроить запросы `curl` с помощью `cron` к вашему приложению раз в 10 минут.
+        настроить запросы `curl` с помощью `cron` к вашему приложению раз в 15 минут.
         
         Пример такого запроса:
 
         ```
-       0/10 7-12 * * *  user  curl https://role-based-auth-express-vue.herokuapp.com/login
+       0,15,30,45 7-12 * * * 7-12 * * *  user  curl https://role-based-auth-express-vue.herokuapp.com/login
        ```
 
-        В моём случае я использовал именно этот вариант.
+        Для этого приложения я использовал именно этот вариант.
 
     2. Если вам всё таки нужно, чтобы приложение на бесплатном аккаунте работало `24/7`,
     то можно привязать банковскую карту к аккаунту и тогда количество доступных для аккаунта
