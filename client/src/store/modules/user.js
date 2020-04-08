@@ -19,12 +19,9 @@ const getters = {
 }
 
 const mutations = {
-  UPDATE_TOKENS (state, tokens) {
-    state.tokens = tokens
-  },
   SET_USER_DATA (state, tokens) {
-    state.tokens = tokens
-    state.userInfo = jwt.decode(tokens.accessToken)
+    state.tokens = { ...tokens }
+    state.userInfo = { ...jwt.decode(tokens.accessToken) }
   },
   REMOVE_USER_DATA (state) {
     state.tokens = {
@@ -65,7 +62,7 @@ const actions = {
       )
 
       if (request.status === 200) {
-        await context.commit('UPDATE_TOKENS', request.data)
+        await context.commit('SET_USER_DATA', request.data)
         return true
       }
 
