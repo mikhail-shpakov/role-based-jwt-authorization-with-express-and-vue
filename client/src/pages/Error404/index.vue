@@ -21,12 +21,12 @@ div
 
     .title-404
       font-size: 4em
-      @media (min-width: 769px)
+      @media (min-width: $display-bp-mobile)
         font-size: 6em
 
     .subtitle-404
       font-size: 1.3em
-      @media (min-width: 769px)
+      @media (min-width: $display-bp-mobile)
         font-size: 1.5em
         margin: -5px 0 5px
 
@@ -40,6 +40,6 @@ div
         background-image: url("../../assets/404.svg")
         background-size: 100% 100%
         min-height: 350px
-        @media (min-width: 769px)
+        @media (min-width: $display-bp-mobile)
           order: 1
 </style>

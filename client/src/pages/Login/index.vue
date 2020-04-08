@@ -97,6 +97,7 @@ div
     border: 1px solid $color-alt
     border-radius: 6px
     display: block
+    margin: auto
     @media (min-width: $display-bp-mobile)
       margin: 50px -0.75rem 0 auto
     &.helper-data
