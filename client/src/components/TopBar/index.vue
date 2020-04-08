@@ -73,7 +73,7 @@ div.section
   border-bottom: 1px solid $color-alt
   padding: 0
   @media (min-width: $display-bp-desktop)
-    padding: 0.75rem 0
+    padding: 0.45rem 0
 
     .navbar-custom
       width: $display-width
