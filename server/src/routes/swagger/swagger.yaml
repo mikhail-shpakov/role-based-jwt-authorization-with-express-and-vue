@@ -1,0 +1,263 @@
+---
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: API for demo project role based JWT authorization with Express and Vue
+  description: Simple API for demo project by Mikhail Shpakov
+  license:
+    name: MIT
+  contact:
+    name: Mikhail Shpakov
+    email: mikhail.n.shpakov@gmail.com
+    url: https://shpakov.dev
+  externalDocs:
+    description: Full app description
+    url: https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+paths:
+  /auth/login:
+    post:
+      tags:
+        - auth
+      operationId: login
+      summary: login
+      requestBody:
+        description: User authorization
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  description: Username for user account
+                  type: string
+                password:
+                  description: Password for user account
+                  type: string
+                fingerprint:
+                  description: Browser fingerprint
+                  type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Success auth
+          content:
+            application/json:
+              type: object
+              example:
+                accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlYTU2MGVhZC1mMWJkLTRiOWMtYTNhYS02YWEzNzlhYmQ2MjUiLCJwZXJtaXNzaW9ucyI6WyJhZG1pbiJdLCJpYXQiOjE1ODU3Nzg5OTgsImV4cCI6MTU4NTc5MzM5OH0.c07m2Z7LkwSfJLYY_HjE4bimWwyhZqXZVo7s9-a_70o
+                refreshToken: 68ac980f-ca12-42ae-9373-6cb94e801968
+        '401':
+          description: User with such credentials not found
+        '500':
+          description: Internal server error
+
+  /auth/refresh-tokens:
+    post:
+      tags:
+        - auth
+      operationId: refresh-tokens
+      summary: refresh-tokens
+      requestBody:
+        description: User refresh tokens
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refreshToken:
+                  description: Refresh token that was stored on the frontend (uuid)
+                  type: string
+                fingerprint:
+                  description: Browser fingerprint
+                  type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Tokens was success updated
+          content:
+            application/json:
+              type: object
+              example:
+                accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlYTU2MGVhZC1mMWJkLTRiOWMtYTNhYS02YWEzNzlhYmQ2MjUiLCJwZXJtaXNzaW9ucyI6WyJhZG1pbiJdLCJpYXQiOjE1ODU3Nzg5OTgsImV4cCI6MTU4NTc5MzM5OH0.c07m2Z7LkwSfJLYY_HjE4bimWwyhZqXZVo7s9-a_70o
+                refreshToken: 68ac980f-ca12-42ae-9373-6cb94e801968
+        '401':
+          description: Invalid refresh token
+        '500':
+          description: Internal server error
+
+  /auth/logout:
+    post:
+      tags:
+        - auth
+      operationId: logout
+      summary: logout
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: User logout
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                refreshToken:
+                  description: Refresh token that was stored on the frontend (uuid)
+                  type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Session success removed, user logout
+        '401':
+          description: Invalid refresh token
+        '500':
+          description: Internal server error
+
+  /server:
+    get:
+      tags:
+        - server
+      operationId: get server list
+      summary: get server list
+      security:
+        - bearerAuth: []
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Server list success received
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/definitions/Servers'
+                example:
+                  - id: 1
+                    serverName: Супер сервер
+                    serverType: dedicated
+        '401':
+          description: Invalid access token
+        '500':
+          description: Internal server error
+
+    post:
+      tags:
+        - server
+      operationId: add new server
+      summary: add new server
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Add new server
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                serverName:
+                  description: Name of new server
+                  type: string
+                serverType:
+                  description: Type of new server
+                  type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Server add successed
+          content:
+            application/json:
+              type: object
+              example:
+                id: 5
+
+    patch:
+      tags:
+        - server
+      operationId: edit existing server
+      summary: edit existing server
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Edit existing server
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  description: Id of existing server
+                  type: integer
+                serverName:
+                  description: New name for existing server
+                  type: string
+                serverType:
+                  description: New type for existing server
+                  type: string
+      produces:
+        - application/json
+      responses:
+        '204':
+          description: Server edit successed
+        '401':
+          description: Invalid access token
+        '500':
+          description: Internal server error
+
+    delete:
+      tags:
+        - server
+      operationId: delete existing server
+      summary: delete existing server
+      security:
+        - bearerAuth: []
+      requestBody:
+        description: Delete existing server
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  description: Id of existing server
+                  type: integer
+      produces:
+        - application/json
+      responses:
+        '204':
+          description: Server delete successed
+        '401':
+          description: Invalid access token
+        '500':
+          description: Internal server error
+
+definitions:
+  Servers:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 1
+      serverName:
+        type: string
+        example: Супер сервер
+      serverType:
+        type: string
+        example: dedicated
