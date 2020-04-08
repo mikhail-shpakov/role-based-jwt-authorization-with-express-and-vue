@@ -21,7 +21,7 @@ module.exports = {
 
   overrides: [
     {
-      files: '**/*.test.js',
+      files: '**/*.spec.js',
       rules: {
         'node/no-unpublished-require': 0,
         'node/no-missing-require': 0

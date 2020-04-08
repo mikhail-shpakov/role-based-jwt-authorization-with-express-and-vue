@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopBar when load page and user auth, TopBar renders correctly 1`] = `
+<div class="section is-vertical-center">
+  <b-navbar-stub fixedtop="true" closeonclick="true" mobileburger="true" class="navbar-custom"><template></template><template></template><template></template></b-navbar-stub>
+</div>
+`;
+
+exports[`TopBar when load page and user non auth, TopBar renders correctly 1`] = `
+<div class="section is-vertical-center">
+  <b-navbar-stub fixedtop="true" closeonclick="true" mobileburger="true" class="navbar-custom"><template></template><template></template><template></template></b-navbar-stub>
+</div>
+`;

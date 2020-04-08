@@ -14,6 +14,7 @@
 
     template(slot='start')
       b-button.is-text(
+        ref="button-link"
         tag="router-link"
         :to="accessToken ? 'Servers' : 'Login'"
       ) {{ accessToken ? 'Сервера' :  'Войти' }}
@@ -31,8 +32,9 @@
         icon-left="github"
       ) Репозиторий
       b-button.is-danger.is-outlined(
+        ref="button-logout"
         tag="a"
-        @click="logout"
+        @click.native="logout()"
         :loading="isLoading"
         v-if="accessToken"
       ) Выйти
