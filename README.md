@@ -16,6 +16,8 @@
 
 :tada: [Демо](https://role-based-auth-express-vue.herokuapp.com/)
 
+:tv: [Дизайн (figma)](https://www.figma.com/file/avH8qVikvrXz0juAad1lo5/%D0%90%D0%B2%D1%82%D0%BE%D1%80%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-%D0%BD%D0%B0-%D0%BE%D1%81%D0%BD%D0%BE%D0%B2%D0%B5-%D1%80%D0%BE%D0%BB%D0%B5%D0%B9-%D1%81-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%D0%BC-Express-%D0%B8-Vue?node-id=0%3A1)
+
 :books: [Swagger](https://role-based-auth-express-vue.herokuapp.com/swagger/)
 
 :hammer: [Используемые технологии и инструменты](#tools)
@@ -257,7 +259,7 @@ SQL схема была разработана с помощью [dbdiagram.io](
         Пример такого запроса:
 
         ```
-       0,15,30,45 7-12 * * * 7-12 * * *  user  curl https://role-based-auth-express-vue.herokuapp.com/login
+       0,15,30,45 7-12 * * * 7-23 * * *  user  curl https://role-based-auth-express-vue.herokuapp.com/login
        ```
 
         Для этого приложения был использован именно этот вариант.
