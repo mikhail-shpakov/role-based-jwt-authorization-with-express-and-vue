@@ -17,7 +17,7 @@ exports[`Login when load page, Login renders correctly 1`] = `
           <b-input-stub usehtml5validation="true" value="" type="password" passwordreveal="true" hascounter="true" customclass=""></b-input-stub>
         </b-field-stub>
         <div class="foot">
-          <b-button-stub nativetype="button" tag="button" disabled="" class="button is-success">Войти</b-button-stub>
+          <b-button-stub nativetype="button" tag="button" disabled="true" class="is-success">Войти</b-button-stub>
         </div>
       </form>
     </div>

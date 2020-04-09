@@ -58,7 +58,7 @@ describe('./ServerForm.vue', () => {
 
     button.trigger('click')
 
-    expect(actions.EDIT_SERVER).toHaveBeenCalled()
+    expect(actions.EDIT_SERVER).not.toHaveBeenCalled()
   })
 
   it('when click button for edit exist server,' +

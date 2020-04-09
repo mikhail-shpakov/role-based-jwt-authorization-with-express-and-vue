@@ -66,7 +66,7 @@ describe('TopBar', () => {
       localVue,
       store
     })
-    const button = wrapper.find('b-button')
+    const button = wrapper.find({ ref: 'button-logout' })
 
     button.trigger('click')
 
