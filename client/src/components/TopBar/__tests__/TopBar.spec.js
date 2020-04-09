@@ -61,12 +61,12 @@ describe('TopBar', () => {
     expect(wrapper).toMatchSnapshot()
   })
 
-  it('when user auth and click logout Button, called Vuex LOGOUT()', () => {
+  it('when user auth and click logout Button, will be called Vuex LOGOUT()', () => {
     const wrapper = shallowMount(TopBar, {
       localVue,
       store
     })
-    const button = wrapper.find({ ref: 'button-logout' })
+    const button = wrapper.find('b-button')
 
     button.trigger('click')
 

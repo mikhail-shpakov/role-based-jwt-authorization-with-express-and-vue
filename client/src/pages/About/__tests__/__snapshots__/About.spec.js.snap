@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`About when load page, renders correctly 1`] = `
+<div class="section">
+  <div class="about-img"></div>
+  <div class="has-text-centered">
+    <p class="about-paragraph">by<a href="https://shpakov.dev" target="_blank" rel="noopener"><strong> Mikhail Shpakov</strong></a></p>
+    <div class="about-container">
+      <p class="about-paragraph">Пример простого клиент-серверного<a href="https://ru.wikipedia.org/wiki/%D0%9E%D0%B4%D0%BD%D0%BE%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%87%D0%BD%D0%BE%D0%B5_%D0%BF%D1%80%D0%B8%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5" target="_blank" rel="noopener"> SPA</a> и<a href="https://web.dev/progressive-web-apps/" target="_blank" rel="noopener"> PWA</a> приложения, которое реализует авторизацию на основе<a href="https://jwt.io/" target="_blank" rel="noopener"> JWT</a> с разделением прав пользователей в зависимости от их роли (пользователь/администратор)
+        и демонстрирует классические<a href="https://ru.wikipedia.org/wiki/CRUD" target="_blank" rel="noopener"> CRUD</a> операции.</p>
+      <p class="about-paragraph">Имплементация JWT авторизации выполнена в соответствии с<a href="https://gist.github.com/zmts/802dc9c3510d79fd40f9dc38a12bccfc" target="_blank" rel="noopener"> описанием</a> и реализует работу с Access и Refresh токенами, а также мультилогин.</p>
+      <p class="about-paragraph">Полное описание доступно в<a href="https://github.com/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue" target="_blank" rel="noopener"> репозитории приложения</a>.</p>
+    </div>
+  </div>
+</div>
+`;

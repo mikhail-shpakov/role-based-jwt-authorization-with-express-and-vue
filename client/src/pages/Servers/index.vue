@@ -11,7 +11,7 @@
       :duration="{ enter: 150, leave: 150 }"
     )
       div(
-        v-if="!('id' in selected)"
+        v-if="!Object.keys(selected).length"
       )
         .img(
           :class="{ 'choice': role === 'admin', 'not-allowed': role === 'user' }"

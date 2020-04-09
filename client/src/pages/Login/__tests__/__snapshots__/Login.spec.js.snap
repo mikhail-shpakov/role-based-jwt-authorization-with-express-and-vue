@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login when load page, Login renders correctly 1`] = `
+<div class="columns">
+  <div class="column auth-img"></div>
+  <div class="column">
+    <div class="tile">
+      <div class="has-text-centered">
+        <p class="auth-title has-text-weight-medium is-size-5 has-text-dark">Авторизация</p>
+        <p class="auth-subtitle">Войдите для доступа к защищённым маршрутам</p>
+      </div>
+      <form>
+        <b-field-stub label="Логин" addons="true">
+          <b-input-stub usehtml5validation="true" value="" type="text" hascounter="true" customclass=""></b-input-stub>
+        </b-field-stub>
+        <b-field-stub label="Пароль" addons="true">
+          <b-input-stub usehtml5validation="true" value="" type="password" passwordreveal="true" hascounter="true" customclass=""></b-input-stub>
+        </b-field-stub>
+        <div class="foot">
+          <b-button-stub nativetype="button" tag="button" disabled="" class="button is-success">Войти</b-button-stub>
+        </div>
+      </form>
+    </div>
+    <div class="tile helper-data">
+      <p>Администратор:<strong> admin/admin</strong></p>
+      <p>Пользователь:<strong> user/user</strong></p>
+    </div>
+  </div>
+</div>
+`;

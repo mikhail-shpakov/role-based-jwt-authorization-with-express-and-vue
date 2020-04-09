@@ -1,4 +1,4 @@
-<template lang="pug">
+<template lang="pug" functional>
 .section
   .about-img
   .has-text-centered

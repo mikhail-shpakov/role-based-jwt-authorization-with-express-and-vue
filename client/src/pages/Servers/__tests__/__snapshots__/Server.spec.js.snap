@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Servers when ServerList emitted event, ServerForm rendering 1`] = `
+<div class="columns">
+  <div class="column is-half">
+    <server-list-stub></server-list-stub>
+  </div>
+  <div class="column form">
+    <transition-stub name="fade" mode="out-in" duration="[object Object]">
+      <server-form-stub selected="[object Object]"></server-form-stub>
+    </transition-stub>
+  </div>
+</div>
+`;
+
+exports[`Servers when load page and user logged in as admin, Servers renders correctly 1`] = `
+<div class="columns">
+  <div class="column is-half">
+    <server-list-stub></server-list-stub>
+  </div>
+  <div class="column form">
+    <transition-stub name="fade" mode="out-in" duration="[object Object]">
+      <div>
+        <div class="img choice"></div>
+        <p class="has-text-centered">Сервер для редактирования не выбран</p>
+      </div>
+    </transition-stub>
+  </div>
+</div>
+`;
+
+exports[`Servers when load page and user logged in as user, Servers renders correctly 1`] = `
+<div class="columns">
+  <div class="column is-half">
+    <server-list-stub></server-list-stub>
+  </div>
+  <div class="column form">
+    <transition-stub name="fade" mode="out-in" duration="[object Object]">
+      <div>
+        <div class="img not-allowed"></div>
+        <p class="has-text-centered">Добавлять, удалять и редактировать сервера может только администратор</p>
+      </div>
+    </transition-stub>
+  </div>
+</div>
+`;

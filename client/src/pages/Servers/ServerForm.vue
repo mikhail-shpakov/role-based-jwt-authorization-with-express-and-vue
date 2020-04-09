@@ -31,16 +31,18 @@
     .buttons.is-pulled-right.button-custom
       b-button(
         v-if="selected.id"
+        ref="button-delete"
         type="is-danger"
         icon-left="delete"
         :loading="isLoadingDelete"
-        @click="confirmDelete()"
+        @click.native="confirmDelete()"
       ) Удалить
       b-button(
+        ref="button-ed"
         type="is-success"
         :loading="isLoadingChanges"
         :disabled="isCheckStatusButton"
-        @click="saveChanges(selected.id ? 'edit' : 'add')"
+        @click.native="saveChanges(selected.id ? 'edit' : 'add')"
       ) {{ selected.id ? 'Сохранить изменения' : 'Добавить сервер' }}
 </template>
 

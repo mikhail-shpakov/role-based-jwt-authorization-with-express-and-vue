@@ -18,10 +18,11 @@
             v-model.trim='authData.password'
           )
         .foot
-          b-button.button.is-success(
-            @click='login()'
+          b-button.is-success(
+            @click.native='login()'
+            ref="button-login"
             :loading="isLoading"
-            :disabled="authData.username && authData.password === ''"
+            :disabled="!authData.username || !authData.password"
           ) Войти
     .tile.helper-data
       p Администратор:
