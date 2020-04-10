@@ -3,7 +3,7 @@ import store from '../../store'
 import axios from 'axios'
 import toast from '../../helpers/programmaticToast'
 
-const user = store.getters['user/GET_USER']
+const user = store?.getters['user/GET_USER']
 const publicPages = ['auth/login', 'auth/refresh-tokens']
 
 const checkNeedUseBearerToken = (uri) => {

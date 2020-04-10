@@ -24,8 +24,6 @@
 </template>
 
 <script>
-// eslint-disable-next-line no-unused-vars
-import methods from '@/services/api/methods'
 import { mapState } from 'vuex'
 import ServerList from './ServerList'
 import ServerForm from './ServerForm'
