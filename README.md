@@ -1,6 +1,8 @@
 # Авторизация на основе ролей с использованием Express и Vue
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
 ![Heroku](https://heroku-badge.herokuapp.com/?app=role-based-auth-express-vue)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f8d68df8ee11e308acd9/maintainability)](https://codeclimate.com/github/mikhail-shpakov/role-based-jwt-authorization-with-express-and-vue/maintainability)
+[![DeepScan grade](https://deepscan.io/api/teams/8555/projects/10761/branches/153238/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=8555&pid=10761&bid=153238)
 
 :ru: by Mikhail Shpakov
 
@@ -163,7 +165,7 @@
    ```
    npm run start // запуск проекта при деплое на Heroku
    npm run lint // ручной запуск линтера
-   npm run test:unit // запуск unit тестов
+   npm run test // запуск unit тестов
    ```
 
 6. **Запуск `Frontend` сервера для разработки**
