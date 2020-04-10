@@ -77,10 +77,8 @@ export default {
       await this.GET_SERVER_LIST()
       this.isLoading = false
     },
-    addListenerEsc () {
-      document.addEventListener('keyup', e => {
-        if (e.code === 'Escape') this.selected = {}
-      })
+    addListenerEsc (e) {
+      if (e.code === 'Escape') this.selected = {}
     },
     addServer () {
       const emptyData = {
@@ -106,7 +104,10 @@ export default {
   },
   async mounted () {
     await this.fetchServerList()
-    this.addListenerEsc()
+    document.addEventListener('keyup', e => this.addListenerEsc(e))
+  },
+  beforeDestroy () {
+    document.removeEventListener('keyup', e => this.addListenerEsc(e))
   }
 }
 </script>

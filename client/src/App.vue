@@ -33,8 +33,8 @@ export default {
       }
 
       window.requestIdleCallback
-        ? requestIdleCallback(async () => { await getFingerprint() })
-        : setTimeout(async () => { await getFingerprint() }, 500)
+        ? requestIdleCallback(async () => { getFingerprint() })
+        : setTimeout(async () => { getFingerprint() }, 500)
     }
   },
   mounted () {
