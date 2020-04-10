@@ -3,18 +3,17 @@ import store from '../../store'
 import axios from 'axios'
 import toast from '../../helpers/programmaticToast'
 
-const user = store?.getters['user/GET_USER']
 const publicPages = ['auth/login', 'auth/refresh-tokens']
 
 const checkNeedUseBearerToken = (uri) => {
   if (!publicPages.includes(uri)) {
-    axios.defaults.headers.common.Authorization = `Bearer ${user.tokens.accessToken}`
+    axios.defaults.headers.common.Authorization = `Bearer ${store.state.user.tokens.accessToken}`
   }
 }
 
 const checkExpiredAccessToken = async (uri) => {
   if (!publicPages.includes(uri)) {
-    const tokenExpire = user.userInfo.exp
+    const tokenExpire = store.state.user.userInfo.exp
     const dateNow = Math.floor(Date.now().valueOf() / 1000)
 
     return tokenExpire < dateNow
