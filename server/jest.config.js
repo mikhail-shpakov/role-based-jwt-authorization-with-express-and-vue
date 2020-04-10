@@ -5,5 +5,8 @@ module.exports = {
   coveragePathIgnorePatterns: [
     '/node_modules/',
     '/src/config/'
+  ],
+  modulePathIgnorePatterns: [
+    '/__tests__/helpers/'
   ]
 }

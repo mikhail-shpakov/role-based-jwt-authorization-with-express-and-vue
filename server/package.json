@@ -12,7 +12,9 @@
     "dev": "cross-env NODE_ENV=development nodemon --ext js --watch src --exec 'npm run lint && node src/server.js'",
     "start": "env NODE_ENV=production NODE_TLS_REJECT_UNAUTHORIZED='0' node src/server.js",
     "lint": "npx eslint .",
-    "test:unit": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles"
+    "pretest": "cross-env NODE_ENV=test npx sequelize-cli db:create && cross-env NODE_ENV=test npx sequelize-cli db:migrate && cross-env NODE_ENV=test npx sequelize-cli db:seed:all",
+    "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles || true",
+    "posttest": "cross-env NODE_ENV=test npx sequelize-cli db:drop"
   },
   "devDependencies": {
     "cross-env": "^7.0.2",
