@@ -107,7 +107,7 @@ export default {
     document.addEventListener('keyup', e => this.addListenerEsc(e))
   },
   beforeDestroy () {
-    document.removeEventListener('keyup', e => this.addListenerEsc(e))
+    document.removeEventListener('keyup', () => this.addListenerEsc)
   }
 }
 </script>
