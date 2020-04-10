@@ -43,7 +43,7 @@
 - [prerender-spa-plugin](https://github.com/chrisvfritz/prerender-spa-plugin)
 (для страницы "О приложении")
 - [Axios](https://github.com/axios/axios)
-- [Jest](https://jestjs.io/)
+- [Jest](https://jestjs.io/) + [vue-test-utils](https://vue-test-utils.vuejs.org/)
 - [Eslint](https://eslint.org/) ([standard style](https://standardjs.com/))
 - [Fingerprintjs2](https://github.com/Valve/fingerprintjs2)
 - [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken)
