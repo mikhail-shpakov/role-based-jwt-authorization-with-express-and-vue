@@ -1,22 +1,22 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c58464c6c6654b5f9f0a",
-    "url": "/css/app.6f229935.css"
+    "revision": "2cd61785f9401c94806e",
+    "url": "/css/app.1b960f90.css"
   },
   {
-    "revision": "557af9225d0d80007542",
-    "url": "/css/chunk-3dbd1a44.622e74d7.css"
+    "revision": "58142b09796b97ede586",
+    "url": "/css/chunk-20a200ce.d59cb6f3.css"
   },
   {
     "revision": "5347b2611c20737ab2f0",
     "url": "/css/chunk-b1b5b44c.7b00b344.css"
   },
   {
-    "revision": "dc0a3f1b98c84895b79c",
-    "url": "/css/chunk-d21dfbfe.2c7ccc2b.css"
+    "revision": "a322740e3b53ab9e643e",
+    "url": "/css/chunk-b4f75b76.3ae019cd.css"
   },
   {
-    "revision": "2128ad39faecd16ef81c",
+    "revision": "e11ae16d68bdb49852da",
     "url": "/css/chunk-vendors.c6910fa6.css"
   },
   {
@@ -60,35 +60,31 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/img/not-allowed.4d2b74b4.svg"
   },
   {
-    "revision": "80543515df801f95aa23b7ae799cb011",
+    "revision": "0908927917ec2dc94aec08e87fe6309e",
     "url": "/index.html"
   },
   {
-    "revision": "c58464c6c6654b5f9f0a",
-    "url": "/js/app.d8c93299.js"
+    "revision": "2cd61785f9401c94806e",
+    "url": "/js/app-legacy.0e255b46.js"
   },
   {
-    "revision": "557af9225d0d80007542",
-    "url": "/js/chunk-3dbd1a44.667dcd98.js"
+    "revision": "58142b09796b97ede586",
+    "url": "/js/chunk-20a200ce-legacy.d60d0c2d.js"
   },
   {
     "revision": "5347b2611c20737ab2f0",
-    "url": "/js/chunk-b1b5b44c.1487ad6b.js"
+    "url": "/js/chunk-b1b5b44c-legacy.1487ad6b.js"
   },
   {
-    "revision": "dc0a3f1b98c84895b79c",
-    "url": "/js/chunk-d21dfbfe.071bfc9c.js"
+    "revision": "a322740e3b53ab9e643e",
+    "url": "/js/chunk-b4f75b76-legacy.a3e2cb35.js"
   },
   {
-    "revision": "2128ad39faecd16ef81c",
-    "url": "/js/chunk-vendors.59b951e9.js"
+    "revision": "e11ae16d68bdb49852da",
+    "url": "/js/chunk-vendors-legacy.bbff73a7.js"
   },
   {
     "revision": "17dd649ecaff6f306a1e9f2d2911b829",
     "url": "/manifest.json"
-  },
-  {
-    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
-    "url": "/robots.txt"
   }
 ]);
