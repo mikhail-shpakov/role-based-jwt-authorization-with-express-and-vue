@@ -10,6 +10,8 @@ router.get('/server', async (req, res) => {
     return
   }
 
+  res.set('Cache-Control', 'no-cache')
+
   await res.json(list)
 })
 
