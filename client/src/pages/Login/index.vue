@@ -85,7 +85,9 @@ export default {
 div
   &.column.auth-img
     background-image: url("../../assets/login.svg")
-    background-size: 100% 100%
+    background-size: auto 100%
+    background-repeat: no-repeat
+    background-position: center
     min-height: 450px
     align-self: center
     display: none

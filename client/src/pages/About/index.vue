@@ -62,7 +62,9 @@ export default {
 div.section
   div.about-img
     background-image: url("../../assets/about.svg")
-    background-size: 100% 100%
+    background-size: auto 100%
+    background-repeat: no-repeat
+    background-position: center
     min-height: 220px
   div.about-container
     max-width: 470px

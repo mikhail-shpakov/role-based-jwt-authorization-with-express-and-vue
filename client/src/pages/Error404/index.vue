@@ -37,8 +37,10 @@ div
     .column
       margin: auto
       &.img-404
+        background-size: auto 100%
+        background-repeat: no-repeat
+        background-position: center
         background-image: url("../../assets/404.svg")
-        background-size: 100% 100%
         min-height: 350px
         @media (min-width: $display-bp-mobile)
           order: 1

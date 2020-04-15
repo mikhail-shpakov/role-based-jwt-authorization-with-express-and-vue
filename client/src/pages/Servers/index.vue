@@ -68,7 +68,9 @@ div.columns
       justify-content: center
 
     div.img
-      background-size: 100% 100%
+      background-size: auto 82%
+      background-repeat: no-repeat
+      background-position: center
       min-height: 350px
       &.not-allowed
         background-image: url("../../assets/not-allowed.svg")
