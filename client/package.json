@@ -23,7 +23,7 @@
     "normalize.css": "^8.0.1",
     "npm-check-updates": "^4.1.1",
     "prerender-spa-plugin": "^3.4.0",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "pug-plain-loader": "^1.0.0",
     "regenerator-runtime": "^0.13.5",
     "register-service-worker": "^1.7.1",
